@@ -98,6 +98,17 @@ eval("/* WEBPACK VAR INJECTION */(function(global) {\n\n__webpack_require__(/*! 
 
 /***/ }),
 
+/***/ "./node_modules/bootstrap-css-only/css/bootstrap.min.css":
+/*!***************************************************************!*\
+  !*** ./node_modules/bootstrap-css-only/css/bootstrap.min.css ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("// removed by extract-text-webpack-plugin\n\n//# sourceURL=webpack:///./node_modules/bootstrap-css-only/css/bootstrap.min.css?");
+
+/***/ }),
+
 /***/ "./node_modules/core-js/fn/regexp/escape.js":
 /*!**************************************************!*\
   !*** ./node_modules/core-js/fn/regexp/escape.js ***!
@@ -10049,7 +10060,7 @@ eval("// removed by extract-text-webpack-plugin\n\n//# sourceURL=webpack:///./sr
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _css_style_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../css/style.css */ \"./src/css/style.css\");\n/* harmony import */ var _css_style_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_css_style_css__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var d3__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! d3 */ \"./node_modules/d3/index.js\");\n\n\nvar square = d3__WEBPACK_IMPORTED_MODULE_1__[\"selectAll\"](\"rect\");\nsquare.style(\"fill\", \"orange\");\n\n//# sourceURL=webpack:///./src/js/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var bootstrap_css_only__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! bootstrap-css-only */ \"./node_modules/bootstrap-css-only/css/bootstrap.min.css\");\n/* harmony import */ var bootstrap_css_only__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(bootstrap_css_only__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _css_style_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../css/style.css */ \"./src/css/style.css\");\n/* harmony import */ var _css_style_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_css_style_css__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var d3__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! d3 */ \"./node_modules/d3/index.js\");\n\n\n\nvar square = d3__WEBPACK_IMPORTED_MODULE_2__[\"selectAll\"](\"rect\");\nsquare.style(\"fill\", \"orange\");\n\n//# sourceURL=webpack:///./src/js/index.js?");
 
 /***/ }),
 
