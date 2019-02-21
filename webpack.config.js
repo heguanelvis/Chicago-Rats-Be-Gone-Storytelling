@@ -1,7 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ExtractTextWebpackPlugin = require("extract-text-webpack-plugin");
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     entry: ["babel-polyfill", "./src/js/index.js"],
@@ -17,10 +16,7 @@ module.exports = {
             filename: "index.html",
             template: "./src/index.html"
         }),
-        new ExtractTextWebpackPlugin("style.css"),
-        new CopyWebpackPlugin([
-            { from: 'src/img', to: 'img' }
-        ])
+        new ExtractTextWebpackPlugin("css/style.css")
     ],
     module: {
         rules: [
@@ -40,7 +36,7 @@ module.exports = {
             {
                 test: /\.(png|jp(e*)g|svg)$/,
                 use: [{
-                    loader: 'url-loader',
+                    loader: "url-loader",
                     options: {
                         limit: 8000, // Convert images < 8kb to base64 strings
                         name: 'img/[hash]-[name].[ext]'
