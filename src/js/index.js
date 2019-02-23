@@ -1,10 +1,8 @@
 import "bootstrap-css-only";
 import "../css/style.css";
 import * as d3 from "d3";
-import ratsExample from "../img/ratsExample.jpg";
+import ratfavi from "../img/ratfavi.png";
 
-const square = d3.selectAll("rect");
-square.style("fill", "orange");
-
-let ratsExampleImg = document.getElementById('ratsExample');
-ratsExampleImg.src = ratsExample;
+/* Images will be loaded here */
+let favicon = document.getElementById('favicon');
+favicon.href = ratfavi;
