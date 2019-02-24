@@ -9,7 +9,7 @@ let favicon = document.getElementById('favicon');
 favicon.href = ratfavi;
 
 /* Data & Plotting */
-const files = ["../data/chicago_5_year_complaints_by_date.json"];
+const files = ["data/chicago_5_year_complaints_by_date.json"];
 
 Promise.all(files.map(path => d3.json(path)))
     .then(res => {
