@@ -2,6 +2,7 @@ import "bootstrap-css-only";
 import "../css/style.css";
 import * as d3 from "d3";
 import ratfavi from "../img/ratfavi.png";
+import StepChart from "./charts/step";
 
 /* Images */
 let favicon = document.getElementById('favicon');
@@ -14,6 +15,26 @@ Promise.all(files.map(path => d3.json(path)))
     .then(res => {
         const complaintsFiveYear = res[0];
         console.log(complaintsFiveYear);
+
+        const stepMargin = { left: 75, right: 75, top: 125, bottom: 100 }
+        const stepWidth = 1000;
+        const stepHeight = 900;
+
+        let stepCanvas = d3.select("#chart2")
+            .append("svg")
+            .attr("class", "svg-center")
+            .attr("width", stepWidth)
+            .attr("height", stepHeight)
+
+        const stepChart = new StepChart(complaintsFiveYear, stepCanvas, stepWidth, stepHeight, stepMargin);
+        stepChart.graphSetup();
+        stepChart.graphScales();
+        stepChart.graphAxes();
+
+        
+        // stepChart.scatterPlot();
+        // responsivefy(stepChart.canvas)
+
     })
     .catch(err => {
         alert("Something went wrong...");
