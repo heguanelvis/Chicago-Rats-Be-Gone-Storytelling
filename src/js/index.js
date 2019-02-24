@@ -16,9 +16,9 @@ Promise.all(files.map(path => d3.json(path)))
         const complaintsFiveYear = res[0];
         console.log(complaintsFiveYear);
 
-        const stepMargin = { left: 75, right: 75, top: 125, bottom: 100 }
+        const stepMargin = { left: 75, right: 75, top: 75, bottom: 75 }
         const stepWidth = 1000;
-        const stepHeight = 900;
+        const stepHeight = 700;
 
         let stepCanvas = d3.select("#chart2")
             .append("svg")

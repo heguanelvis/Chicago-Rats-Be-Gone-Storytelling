@@ -48,6 +48,18 @@ export default class StepChart {
             .attr("class", "ticks");
     }
 
+    graphLine() {
+        const timeLine = d3.line()
+            .data(this.data)
+            .x(d => x(d.date))
+            .y(d => y(d.count))
+
+        var line = d3.line()
+            
+            .x(function (d) { return x(d.date); })
+            .y(function (d) { return y(d.value); });
+    }
+
 }
 // export default class Chart {
 //     constructor(data, canvas, width, height, margin) {
