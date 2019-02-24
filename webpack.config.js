@@ -1,6 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ExtractTextWebpackPlugin = require("extract-text-webpack-plugin");
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = {
     entry: ["babel-polyfill", "./src/js/index.js"],
@@ -16,7 +17,8 @@ module.exports = {
             filename: "index.html",
             template: "./src/index.html"
         }),
-        new ExtractTextWebpackPlugin("css/style.css")
+        new ExtractTextWebpackPlugin("css/style.css"),
+        new OptimizeCssAssetsPlugin()
     ],
     module: {
         rules: [
@@ -30,8 +32,8 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: ExtractTextWebpackPlugin.extract({
-                    use: "css-loader",
-                }),
+                    use: "css-loader"
+                })
             },
             {
                 test: /\.(png|jp(e*)g|svg)$/,
