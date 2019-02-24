@@ -22,7 +22,6 @@ Promise.all(files.map(path => d3.json(path)))
 
         let stepCanvas = d3.select("#chart2")
             .append("svg")
-            .attr("class", "svg-center")
             .attr("width", stepWidth)
             .attr("height", stepHeight)
 
@@ -30,10 +29,9 @@ Promise.all(files.map(path => d3.json(path)))
         stepChart.graphSetup();
         stepChart.graphScales();
         stepChart.graphAxes();
-
-        
+        responsivefy(stepChart.canvas)
+  
         // stepChart.scatterPlot();
-        // responsivefy(stepChart.canvas)
 
     })
     .catch(err => {
