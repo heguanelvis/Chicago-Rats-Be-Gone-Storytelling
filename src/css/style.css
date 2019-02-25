@@ -9,6 +9,7 @@ rgb(44,62,80)
 */
 html, body {
   height: 100%;
+  overflow-x: hidden;
 }
 
 .chart-section {
@@ -32,5 +33,9 @@ html, body {
   .chart-section {
     min-height: 900px;
   }
+}
+
+.chart-section .chart-source {
+  fill: white;
 }
 /*# sourceMappingURL=style.css.map */

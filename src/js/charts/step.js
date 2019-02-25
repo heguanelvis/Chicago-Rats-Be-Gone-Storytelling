@@ -56,68 +56,58 @@ export default class StepChart {
             .curve(d3.curveStepAfter)
 
         this.timePath = this.graph.append("path")
-            .datum(this.data) 
+            .datum(this.data)
             .attr("d", timeLine)
             .attr("stroke", "white")
             .attr("stroke-width", 2)
             .attr("fill", "none")
 
         const l = this.timePath.node().getTotalLength();
-        
+
         this.timePath.attr("stroke-dasharray", `${l}, ${l}`)
             .attr("stroke-dashoffset", l);
 
         this.timePath.transition()
             .duration(10000)
             .attr("stroke-dashoffset", 0);
-            // .call(this.graphAnimate); 
     }
 
-    // graphTweenDash() {
-    //     var l = this.getTotalLength(),
-    //         i = d3.interpolateString("0," + l, l + "," + l);
-    
-    //     return function (t) { return i(t); };
-    // }
+    graphAxesLabel() {
+        this.graph.append("text")
+            .text("Time")
+            .attr("text-anchor", "middle")
+            .attr("transform", `translate(${this.width / 1.9}, ${this.margin.bottom * 1.5 + this.graphHeight})`)
+            .attr("font-size", "14")
+            .attr("fill", "white")
+        this.graph.append("text")
+            .text("Complaint Count")
+            .attr("text-anchor", "middle")
+            .attr("transform", `translate(${this.margin.left / 3 }, ${this.height / 1.9})rotate(-90)`)
+            .attr("font-size", "14")
+            .attr("fill", "white")
+    }
 
-    // graphAnimate(path) {
-    //     console.log(path);
-    //     path.transition()
-    //         .duration(2000)
-    //         .attrTween("stroke-dasharray", this.graphTweenDash);
-    
-    // }
-
+    graphInfo() {
+        this.graph.append("text")
+            .text("Number of Rat Complaints Peaked in 2017 and Appeared to Have a Seasonal Pattern")
+            .attr("text-anchor", "middle")
+            .attr("transform", `translate(${this.width / 2}, ${this.margin.top / 3})`)
+            .attr("font-size", "20")
+            .attr("fill", "white")
+        this.graph.append("text")
+            .text("Monthly rat complaint counts from 2014 to 2018 in Chicago")
+            .attr("text-anchor", "middle")
+            .attr("transform", `translate(${this.width / 2}, ${this.margin.top / 1.5})`)
+            .attr("font-size", "16")
+            .attr("fill", "white")
+        this.graph.append("text")
+            .html(() => "Source: <a class='chart-source' href='https://data.cityofchicago.org/Service-Requests/311-Service-Requests-Rodent-Baiting-No-Duplicates/uqhs-j723'>Chicago Data Portal</a>")
+            .attr("text-anchor", "middle")
+            .attr("transform", `translate(${this.width / 1.19}, ${this.height - this.margin.bottom / 5})`)
+            .attr("font-size", "14")
+            .attr("fill", "white")
+    }
 }
-// export default class Chart {
-//     constructor(data, canvas, width, height, margin) {
-//         this.data = data;
-//         this.canvas = canvas;
-//         this.width = width;
-//         this.height = height;
-//         this.margin = margin;
-//         this.graphWidth = this.width - this.margin.left - this.margin.right;
-//         this.graphHeight = this.height - this.margin.top - this.margin.bottom;
-//     }
-
-//     graphSetup() {
-//         this.graph = this.canvas.append("g")
-//             .attr("tranform", () => `translate(${this.margin.left}, ${this.margin.top})`);
-//     }
-
-//     graphScales() {
-//         const incomeMax = d3.max(this.data, d => d.income);
-//         const complaintsMax = d3.max(this.data, d => d.complaints);
-//         this.x = d3.scaleLinear()
-//             .domain([0, incomeMax])
-//             .range([this.graphWidth + this.margin.left, this.margin.left])
-//             .nice()
-
-//         this.y = d3.scaleLinear()
-//             .domain([0, complaintsMax])
-//             .range([this.margin.top, this.graphHeight + this.margin.top])
-//             .nice()
-//     }
 
 //     graphCircles() {
 //         let circles = this.graph.selectAll("circle")
@@ -135,90 +125,6 @@ export default class StepChart {
 
 //         circles.on("mouseover", this.handleMouseOver.bind(this))
 //             .on("mouseout", this.handleMouseOut)
-//     }
-
-//     graphAxes() {
-//         const xAxisGroup = this.graph.append("g")
-//             .attr("transform", `translate(0, ${this.margin.top})`);
-
-//         const yAxisGroup = this.graph.append("g")
-//             .attr("transform", `translate(${this.graphWidth + this.margin.left}, 0)`);
-
-//         const xAxis = d3.axisTop(this.x);
-//         const yAxis = d3.axisRight(this.y);
-
-//         xAxisGroup.call(xAxis)
-//             .attr("class", "ticks");
-//         yAxisGroup.call(yAxis)
-//             .attr("class", "ticks");
-//     }
-
-//     graphAxesLabel() {
-//         this.graph.append("text")
-//             .text("Average Income Per Capita")
-//             .attr("text-anchor", "middle")
-//             .attr("transform", `translate(${this.width / 2}, ${this.margin.top / 1.35})`)
-//             .attr("font-size", "14")
-//         this.graph.append("text")
-//             .text("Complaint Count")
-//             .attr("text-anchor", "middle")
-//             .attr("transform", `translate(${this.width - this.margin.right / 6}, ${this.height / 1.7})rotate(-90)`)
-//             .attr("font-size", "14")
-//     }
-
-//     graphAxesInfo() {
-//         this.graph.append("text")
-//             .text("Communities with lower Income and More Renters Less Likely to See Rat Complaints (2017)")
-//             .attr("text-anchor", "middle")
-//             .attr("transform", `translate(${this.width / 2}, ${this.margin.top / 3})`)
-//             .attr("font-size", "20")
-//         this.graph.append("text")
-//             .text("Relationship between income and rat complaints within 30 most populous Chicago Communities")
-//             .attr("text-anchor", "middle")
-//             .attr("transform", `translate(${this.width / 2}, ${this.margin.top / 1.9})`)
-//             .attr("font-size", "16")
-//         this.graph.append("text")
-//             .html(() => "Source: <a class='source' href='https://api.census.gov/data/2016/acs/acs5/variables.html'>American Community Survey</a> & <a class='source' href='https://data.cityofchicago.org/Service-Requests/311-Service-Requests-Rodent-Baiting-No-Duplicates/uqhs-j723'>Chicago Data Portal</a>")
-//             .attr("text-anchor", "middle")
-//             .attr("transform", `translate(${this.width / 1.38}, ${this.height - this.margin.bottom / 2})`)
-//             .attr("font-size", "14")
-//     }
-
-//     graphLegend() {
-//         const legendGroup = this.graph.append("g")
-//             .attr("transform", `translate(${this.width / 12}, ${this.height - this.margin.bottom * 5})`);
-
-//         legendGroup.append("text")
-//             .transition()
-//             .duration(3000)
-//             .text("Renter Proportion <= 0.6")
-//             .attr("transform", `translate(25, 13)`)
-//             .attr("font-size", "14")
-
-//         legendGroup.append("rect")
-//             .transition()
-//             .duration(3000)
-//             .attr("width", 15)
-//             .attr("height", 15)
-//             .attr("x", 0)
-//             .attr("y", 0)
-//             .attr("class", "circles")
-
-//         legendGroup.append("text")
-//             .transition()
-//             .duration(3000)
-//             .text("Renter Proportion > 0.6")
-//             .attr("transform", `translate(25, 43)`)
-//             .attr("font-size", "14")
-
-//         legendGroup.append("rect")
-//             .transition()
-//             .duration(3000)
-//             .attr("width", 15)
-//             .attr("height", 15)
-//             .attr("x", 0)
-//             .attr("y", 30)
-//             .attr("class", "renter-circles")
 //     }
 
 //     handleMouseOver(d, i, n) {

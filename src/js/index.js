@@ -29,7 +29,9 @@ Promise.all(files.map(path => d3.json(path)))
         stepChart.graphSetup();
         stepChart.graphScales();
         stepChart.graphAxes();
+        stepChart.graphAxesLabel();
         stepChart.graphLine();
+        stepChart.graphInfo();
         responsivefy(stepChart.canvas)
   
         // stepChart.scatterPlot();

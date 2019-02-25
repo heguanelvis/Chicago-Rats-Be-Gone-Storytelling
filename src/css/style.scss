@@ -12,6 +12,7 @@ $break-sm: 540px;
 
 html, body {
     height: 100%;
+    overflow-x: hidden;
 }
 
 .chart-section {
@@ -34,4 +35,7 @@ html, body {
         min-height: 900px;
     }
 
+    .chart-source {
+        fill: white;
+    }
 }
