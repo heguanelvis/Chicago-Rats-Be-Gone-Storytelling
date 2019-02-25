@@ -40,7 +40,10 @@ html, body {
         text-decoration: underline;
         &:hover {
             fill: gray;
-            cursor: pointer;
         }
     }
+}
+
+.cursor-pointer {
+    cursor: pointer;
 }

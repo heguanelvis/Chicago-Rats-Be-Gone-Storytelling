@@ -84,6 +84,7 @@ export default class StepChart {
             .attr("r", 0)
             .attr("cx", d => this.x(new Date(d.date)))
             .attr("cy", d => this.y(d.count))
+            .attr("class", "cursor-pointer")
 
         circles.transition()
             .duration(1500)

@@ -42,6 +42,9 @@ html, body {
 
 .chart-section .chart-source:hover {
   fill: gray;
+}
+
+.cursor-pointer {
   cursor: pointer;
 }
 /*# sourceMappingURL=style.css.map */
