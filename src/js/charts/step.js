@@ -53,7 +53,7 @@ export default class StepChart {
         const timeLine = d3.line()
             .x(d => this.x(new Date(d.date)))
             .y(d => this.y(d.count))
-            .curve(d3.curveMonotoneX)
+            .curve(d3.curveStepAfter)
 
         // 9. Append the path, bind the data, and call the line generator 
         this.graph.append("path")
