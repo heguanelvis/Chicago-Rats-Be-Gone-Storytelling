@@ -13,29 +13,24 @@ const files = ["data/chicago_5_year_complaints_by_date.json"];
 
 Promise.all(files.map(path => d3.json(path)))
     .then(res => {
+        /* Data Naming */
         const complaintsFiveYear = res[0];
-        console.log(complaintsFiveYear);
+      
+        /* US Map*/
 
+        /* Step Chart */ 
         const stepMargin = { left: 75, right: 75, top: 75, bottom: 75 }
         const stepWidth = 1000;
         const stepHeight = 700;
-
         let stepCanvas = d3.select("#chart2")
             .append("svg")
             .attr("width", stepWidth)
             .attr("height", stepHeight)
-
         const stepChart = new StepChart(complaintsFiveYear, stepCanvas, stepWidth, stepHeight, stepMargin);
-        stepChart.graphSetup();
-        stepChart.graphScales();
-        stepChart.graphAxes();
-        stepChart.graphAxesLabel();
-        stepChart.graphLine();
-        stepChart.graphInfo();
-        responsivefy(stepChart.canvas)
-  
-        // stepChart.scatterPlot();
+        stepChart.grapher();
+        responsivefy(stepChart.canvas);
 
+        /* Donut Chart */
     })
     .catch(err => {
         alert("Something went wrong...");

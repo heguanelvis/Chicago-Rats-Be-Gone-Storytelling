@@ -37,5 +37,10 @@ html, body {
 
 .chart-section .chart-source {
   fill: white;
+  text-decoration: underline;
+}
+
+.chart-section .chart-source:hover {
+  fill: gray;
 }
 /*# sourceMappingURL=style.css.map */

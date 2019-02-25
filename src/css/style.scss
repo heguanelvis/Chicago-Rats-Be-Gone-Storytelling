@@ -37,5 +37,9 @@ html, body {
 
     .chart-source {
         fill: white;
+        text-decoration: underline;
+        &:hover {
+            fill: gray;
+        }
     }
 }

@@ -68,8 +68,70 @@ export default class StepChart {
             .attr("stroke-dashoffset", l);
 
         this.timePath.transition()
-            .duration(10000)
+            .duration(5000)
             .attr("stroke-dashoffset", 0);
+
+        setTimeout(() => {
+            this.graphCircles()
+        }, 5000);
+    }
+
+    graphCircles() {
+        let circles = this.graph.selectAll("circle")
+            .data(this.data)
+            .enter()
+            .append("circle")
+            .attr("r", 0)
+            .attr("cx", d => this.x(new Date(d.date)))
+            .attr("cy", d => this.y(d.count))
+
+        circles.transition()
+            .duration(1500)
+            .attr("r", 4)
+            .attr("fill", "white")
+
+        circles.on("mouseover", this.handleMouseOver.bind(this))
+            .on("mouseout", this.handleMouseOut)
+    }
+
+    handleMouseOver(d, i, n) {
+        const months = [
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December"
+        ]
+
+        d3.select(n[i])
+            .attr("r", 7)
+            .attr("stroke", "gray")
+            .attr("stroke-width", 2);
+
+        this.graph.append("text")
+            .attr("id", `t-${d.date}-${d.count}-${i}`)
+            .attr("x", () => this.x(new Date(d.date)) - 30)
+            .attr("y", () => this.y(d.count) - 15)
+            .text(() => `${months[(new Date(d.date)).getMonth()]}: ${d.count}`)
+            .attr("font-size", "14")
+            .attr("fill", "gray");
+    }
+
+    handleMouseOut(d, i, n) {
+        d3.select(this)
+            .attr("r", 4)
+            .attr("stroke", "white")
+            .attr("stroke-width", 0);
+
+        d3.select(`#t-${d.date}-${d.count}-${i}`)
+            .remove();
     }
 
     graphAxesLabel() {
@@ -82,7 +144,7 @@ export default class StepChart {
         this.graph.append("text")
             .text("Complaint Count")
             .attr("text-anchor", "middle")
-            .attr("transform", `translate(${this.margin.left / 3 }, ${this.height / 1.9})rotate(-90)`)
+            .attr("transform", `translate(${this.margin.left / 3}, ${this.height / 1.9})rotate(-90)`)
             .attr("font-size", "14")
             .attr("fill", "white")
     }
@@ -107,57 +169,15 @@ export default class StepChart {
             .attr("font-size", "14")
             .attr("fill", "white")
     }
+
+    grapher() {
+        this.graphSetup();
+        this.graphScales();
+        this.graphAxes();
+        this.graphAxesLabel();
+        this.graphInfo();
+        this.graphLine();
+    }
 }
 
-//     graphCircles() {
-//         let circles = this.graph.selectAll("circle")
-//             .data(this.data)
-//             .enter()
-//             .append("circle")
-//             .attr("class", d => d.renter > 0.611 ? "renter-circles pointer" : "circles pointer")
-//             .attr("r", 0)
-//             .attr("cx", d => this.x(d.income))
-//             .attr("cy", d => this.y(d.complaints))
 
-//         circles.transition()
-//             .duration(3000)
-//             .attr("r", 10)
-
-//         circles.on("mouseover", this.handleMouseOver.bind(this))
-//             .on("mouseout", this.handleMouseOut)
-//     }
-
-//     handleMouseOver(d, i, n) {
-//         d3.select(n[i])
-//             .attr("r", 12.5)
-//             .attr("stroke", "#af7156")
-//             .attr("stroke-width", 3);
-
-//         this.graph.append("text")
-//             .attr("id", `t-${d.income}-${d.complaints}-${i}`)
-//             .attr("x", () => this.x(d.income - 1600))
-//             .attr("y", () => this.y(d.complaints))
-//             .text(() => d.community)
-//             .attr("font-size", "14")
-//     }
-
-//     handleMouseOut(d, i, n) {
-//         d3.select(this)
-//             .attr("r", 10)
-//             .attr("stroke", "white")
-//             .attr("stroke-width", 0);
-
-//         d3.select(`#t-${d.income}-${d.complaints}-${i}`)
-//             .remove();
-//     }
-
-//     scatterPlot() {
-//         this.graphSetup();
-//         this.graphScales();
-//         this.graphCircles();
-//         this.graphAxes();
-//         this.graphAxesLabel();
-//         this.graphAxesInfo();
-//         this.graphLegend();
-//     }
-// }
