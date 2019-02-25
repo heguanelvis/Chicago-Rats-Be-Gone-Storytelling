@@ -8,6 +8,8 @@ rgb(255,246,141)
 rgb(44,62,80)
 */
 
+$break-sm: 540px;
+
 html, body {
     height: 100%;
 }
@@ -27,4 +29,9 @@ html, body {
     &:nth-of-type(3) {
         background: rgb(156,85,165);
     }
+
+    @media screen and (min-width: $break-sm) {
+        min-height: 900px;
+    }
+
 }

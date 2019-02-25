@@ -55,15 +55,38 @@ export default class StepChart {
             .y(d => this.y(d.count))
             .curve(d3.curveStepAfter)
 
-        // 9. Append the path, bind the data, and call the line generator 
-        this.graph.append("path")
-            .datum(this.data) // 10. Binds data to the line 
+        this.timePath = this.graph.append("path")
+            .datum(this.data) 
             .attr("d", timeLine)
             .attr("stroke", "white")
             .attr("stroke-width", 2)
-            .attr("fill", "none"); // 11. Calls the line generator 
-            
+            .attr("fill", "none")
+
+        const l = this.timePath.node().getTotalLength();
+        
+        this.timePath.attr("stroke-dasharray", `${l}, ${l}`)
+            .attr("stroke-dashoffset", l);
+
+        this.timePath.transition()
+            .duration(10000)
+            .attr("stroke-dashoffset", 0);
+            // .call(this.graphAnimate); 
     }
+
+    // graphTweenDash() {
+    //     var l = this.getTotalLength(),
+    //         i = d3.interpolateString("0," + l, l + "," + l);
+    
+    //     return function (t) { return i(t); };
+    // }
+
+    // graphAnimate(path) {
+    //     console.log(path);
+    //     path.transition()
+    //         .duration(2000)
+    //         .attrTween("stroke-dasharray", this.graphTweenDash);
+    
+    // }
 
 }
 // export default class Chart {

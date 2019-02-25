@@ -27,4 +27,10 @@ html, body {
 .chart-section:nth-of-type(3) {
   background: #9c55a5;
 }
+
+@media screen and (min-width: 540px) {
+  .chart-section {
+    min-height: 900px;
+  }
+}
 /*# sourceMappingURL=style.css.map */
