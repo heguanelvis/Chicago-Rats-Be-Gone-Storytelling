@@ -19,6 +19,7 @@ export default class StepChart {
     graphScales() {
         const dateExtent = d3.extent(this.data, d => d.date)
             .map(e => new Date(e));
+        console.log(dateExtent, this.data);
         const countMax = d3.max(this.data, d => d.count);
 
         this.x = d3.scaleTime()
@@ -50,14 +51,18 @@ export default class StepChart {
 
     graphLine() {
         const timeLine = d3.line()
-            .data(this.data)
-            .x(d => x(d.date))
-            .y(d => y(d.count))
+            .x(d => this.x(new Date(d.date)))
+            .y(d => this.y(d.count))
+            .curve(d3.curveMonotoneX)
 
-        var line = d3.line()
+        // 9. Append the path, bind the data, and call the line generator 
+        this.graph.append("path")
+            .datum(this.data) // 10. Binds data to the line 
+            .attr("d", timeLine)
+            .attr("stroke", "white")
+            .attr("stroke-width", 2)
+            .attr("fill", "none"); // 11. Calls the line generator 
             
-            .x(function (d) { return x(d.date); })
-            .y(function (d) { return y(d.value); });
     }
 
 }
