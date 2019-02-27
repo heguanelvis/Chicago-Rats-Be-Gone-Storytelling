@@ -10,6 +10,12 @@ rgb(44,62,80)
 
 $break-sm: 540px;
 
+@mixin sm {
+   @media (min-width: #{$break-sm}) {
+       @content;
+   }
+}
+
 html, body {
     height: 100%;
     width: 100%;
@@ -22,7 +28,6 @@ html, body {
 #pinContainer {
     height: 100%;
     width: 100%;
-    overflow: hidden;
 }
 
 .story-section {
@@ -38,14 +43,23 @@ html, body {
 
     &:nth-of-type(2) {
         background: rgb(42,184,172);
+        @include sm {
+            min-height: 900px;
+        }
     }
 
     &:nth-of-type(3) {
         background: rgb(255,196,133);
+        @include sm {
+            min-height: 900px;
+        }
     }
 
     &:nth-of-type(4) {
         background: rgb(156,85,165);
+        @include sm {
+            min-height: 900px;
+        }
     }
 
     .chart-source {
@@ -54,10 +68,6 @@ html, body {
         &:hover {
             fill: gray;
         }
-    }
-
-    @media screen and (min-width: $break-sm) {
-        min-height: 900px;
     }
 }
 

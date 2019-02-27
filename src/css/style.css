@@ -19,7 +19,6 @@ html .row, body .row {
 #pinContainer {
   height: 100%;
   width: 100%;
-  overflow: hidden;
 }
 
 .story-section {
@@ -38,12 +37,30 @@ html .row, body .row {
   background: #2ab8ac;
 }
 
+@media (min-width: 540px) {
+  .story-section:nth-of-type(2) {
+    min-height: 900px;
+  }
+}
+
 .story-section:nth-of-type(3) {
   background: #ffc485;
 }
 
+@media (min-width: 540px) {
+  .story-section:nth-of-type(3) {
+    min-height: 900px;
+  }
+}
+
 .story-section:nth-of-type(4) {
   background: #9c55a5;
+}
+
+@media (min-width: 540px) {
+  .story-section:nth-of-type(4) {
+    min-height: 900px;
+  }
 }
 
 .story-section .chart-source {
@@ -53,12 +70,6 @@ html .row, body .row {
 
 .story-section .chart-source:hover {
   fill: gray;
-}
-
-@media screen and (min-width: 540px) {
-  .story-section {
-    min-height: 900px;
-  }
 }
 
 .cursor-pointer {

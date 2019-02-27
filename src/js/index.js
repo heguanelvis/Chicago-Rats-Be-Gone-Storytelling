@@ -79,3 +79,7 @@ new ScrollMagic.Scene({
 }).setPin("#pinContainer")
     .setTween(wipeAnimation)
     .addTo(sliderController);
+
+window.addEventListener("resize", () => {
+    location.reload();
+})
