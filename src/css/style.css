@@ -37,6 +37,12 @@ html .row, body .row {
   background: #2ab8ac;
 }
 
+@media (max-width: 540px) {
+  .story-section:nth-of-type(2) {
+    min-height: 800px;
+  }
+}
+
 @media (min-width: 540px) {
   .story-section:nth-of-type(2) {
     min-height: 900px;
@@ -47,6 +53,12 @@ html .row, body .row {
   background: #ffc485;
 }
 
+@media (max-width: 540px) {
+  .story-section:nth-of-type(3) {
+    min-height: 800px;
+  }
+}
+
 @media (min-width: 540px) {
   .story-section:nth-of-type(3) {
     min-height: 900px;
@@ -55,6 +67,12 @@ html .row, body .row {
 
 .story-section:nth-of-type(4) {
   background: #9c55a5;
+}
+
+@media (max-width: 540px) {
+  .story-section:nth-of-type(4) {
+    min-height: 800px;
+  }
 }
 
 @media (min-width: 540px) {

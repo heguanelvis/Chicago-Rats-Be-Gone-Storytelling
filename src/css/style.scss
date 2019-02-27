@@ -10,6 +10,12 @@ rgb(44,62,80)
 
 $break-sm: 540px;
 
+@mixin mobile {
+    @media (max-width: #{$break-sm}) {
+       @content;
+   }
+}
+
 @mixin sm {
    @media (min-width: #{$break-sm}) {
        @content;
@@ -43,6 +49,9 @@ html, body {
 
     &:nth-of-type(2) {
         background: rgb(42,184,172);
+        @include mobile {
+            min-height: 800px;
+        }
         @include sm {
             min-height: 900px;
         }
@@ -50,6 +59,9 @@ html, body {
 
     &:nth-of-type(3) {
         background: rgb(255,196,133);
+        @include mobile {
+            min-height: 800px;
+        }
         @include sm {
             min-height: 900px;
         }
@@ -57,6 +69,9 @@ html, body {
 
     &:nth-of-type(4) {
         background: rgb(156,85,165);
+        @include mobile {
+            min-height: 800px;
+        }
         @include sm {
             min-height: 900px;
         }
