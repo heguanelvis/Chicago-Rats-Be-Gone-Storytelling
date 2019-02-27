@@ -72,7 +72,7 @@ function responsivefy(svg) {
         .fromTo(".story-section.us-map", 1, { x: "-100%" }, { x: "0%", ease: Linear.easeNone })
         .to("#pinContainer", 1, { z: 0 })
         .fromTo(".story-section.us-map", 1, { y: "0%" }, { y: "-100%", ease: Linear.easeNone })
-        .to("#pinContainer", 1, { z: 100 })
+        .to("#pinContainer", 1, { z: -100 })
         .fromTo(".story-section.step", 1, { x: "100%" }, { x: "0%", ease: Linear.easeNone })
         .to("#pinContainer", 1, { z: 0 })
         .fromTo(".story-section.step", 1, { y: "0" }, { y: "-100%", ease: Linear.easeNone })
