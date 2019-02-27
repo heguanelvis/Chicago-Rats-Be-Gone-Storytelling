@@ -45,6 +45,13 @@ html, body {
     &:nth-of-type(1) {
         background: rgb(255,246,141);
         color: rgb(44,62,80);
+        @include mobile {
+            padding-top: 15vh;
+            min-height: 800px;
+        }
+        @include sm {
+            align-items: center;
+        }
     }
 
     &:nth-of-type(2) {

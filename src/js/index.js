@@ -80,11 +80,10 @@ new ScrollMagic.Scene({
     .setTween(wipeAnimation)
     .addTo(sliderController);
 
-const windowInitialWidth = window.screen.width;
-const windowInitialHeight = window.screen.height;
-
 window.addEventListener("resize", () => {
-    if (windowInitialWidth !== window.screen.width || windowInitialHeight !== window.screen.height) {
-        if (window.screen.width >= 450) location.reload();
-    }
+    if (!isMobileDevice()) location.reload();
 })
+
+function isMobileDevice() {
+    return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
+};
