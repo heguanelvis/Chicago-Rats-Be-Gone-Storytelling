@@ -9,39 +9,56 @@ rgb(44,62,80)
 */
 html, body {
   height: 100%;
-  overflow-x: hidden;
+  width: 100%;
 }
 
-.chart-section {
+html .row, body .row {
+  margin: 0;
+}
+
+#pinContainer {
   height: 100%;
-  color: white;
+  width: 100%;
+  overflow: hidden;
 }
 
-.chart-section:nth-of-type(1) {
+.story-section {
+  height: 100%;
+  width: 100%;
+  color: white;
+  position: absolute;
+}
+
+.story-section:nth-of-type(1) {
+  background: #fff68d;
+  color: #2c3e50;
+}
+
+.story-section:nth-of-type(2) {
   background: #2ab8ac;
 }
 
-.chart-section:nth-of-type(2) {
+.story-section:nth-of-type(3) {
   background: #ffc485;
 }
 
-.chart-section:nth-of-type(3) {
+.story-section:nth-of-type(4) {
   background: #9c55a5;
 }
 
-@media screen and (min-width: 540px) {
-  .chart-section {
-    min-height: 900px;
-  }
-}
-
-.chart-section .chart-source {
+.story-section .chart-source {
   fill: white;
   text-decoration: underline;
 }
 
-.chart-section .chart-source:hover {
+.story-section .chart-source:hover {
   fill: gray;
+}
+
+@media screen and (min-width: 540px) {
+  .story-section {
+    min-height: 900px;
+  }
 }
 
 .cursor-pointer {

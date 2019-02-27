@@ -12,27 +12,40 @@ $break-sm: 540px;
 
 html, body {
     height: 100%;
-    overflow-x: hidden;
+    width: 100%;
+
+    .row {
+        margin: 0;
+    }
 }
 
-.chart-section {
+#pinContainer {
     height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.story-section {
+    height: 100%;
+    width: 100%;
     color: white;
+    position: absolute;
 
     &:nth-of-type(1) {
-        background: rgb(42,184,172);
+        background: rgb(255,246,141);
+        color: rgb(44,62,80);
     }
 
     &:nth-of-type(2) {
-        background: rgb(255,196,133);
+        background: rgb(42,184,172);
     }
 
     &:nth-of-type(3) {
-        background: rgb(156,85,165);
+        background: rgb(255,196,133);
     }
 
-    @media screen and (min-width: $break-sm) {
-        min-height: 900px;
+    &:nth-of-type(4) {
+        background: rgb(156,85,165);
     }
 
     .chart-source {
@@ -42,8 +55,13 @@ html, body {
             fill: gray;
         }
     }
+
+    @media screen and (min-width: $break-sm) {
+        min-height: 900px;
+    }
 }
 
 .cursor-pointer {
     cursor: pointer;
 }
+
