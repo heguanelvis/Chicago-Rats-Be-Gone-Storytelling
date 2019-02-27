@@ -65,25 +65,34 @@ function responsivefy(svg) {
 }
 
 /* Slider Control */
-let sliderController = new ScrollMagic.Controller();
-let wipeAnimation = new TimelineMax()
-    .fromTo(".story-section.us-map", 1, { x: "-100%" }, { x: "0%", ease: Linear.easeNone })
-    .fromTo(".story-section.us-map", 1, { y: "0%" }, { y: "-100%", ease: Linear.easeNone })
-    .fromTo(".story-section.step", 1, { x: "100%" }, { x: "0%", ease: Linear.easeNone })
-    .fromTo(".story-section.step", 1, { y: "0" }, { y: "-100%", ease: Linear.easeNone })
-    .fromTo(".story-section.donut", 1, { y: "-100%" }, { y: "0%", ease: Linear.easeNone })
-new ScrollMagic.Scene({
-    triggerElement: "#pinContainer",
-    triggerHook: "onLeave",
-    duration: "300%"
-}).setPin("#pinContainer")
-    .setTween(wipeAnimation)
-    .addTo(sliderController);
+{
+    let sliderController = new ScrollMagic.Controller();
+    let wipeAnimation = new TimelineMax()
+        .to("#pinContainer", 1, { z: -100 })
+        .fromTo(".story-section.us-map", 1, { x: "-100%" }, { x: "0%", ease: Linear.easeNone })
+        .to("#pinContainer", 1, { z: 0 })
+        .fromTo(".story-section.us-map", 1, { y: "0%" }, { y: "-100%", ease: Linear.easeNone })
+        .to("#pinContainer", 1, { z: 100 })
+        .fromTo(".story-section.step", 1, { x: "100%" }, { x: "0%", ease: Linear.easeNone })
+        .to("#pinContainer", 1, { z: 0 })
+        .fromTo(".story-section.step", 1, { y: "0" }, { y: "-100%", ease: Linear.easeNone })
+        .to("#pinContainer", 1, { z: -100 })
+        .fromTo(".story-section.donut", 1, { y: "-100%" }, { y: "0%", ease: Linear.easeNone })
+        .to("#pinContainer", 1, { z: 0 })
 
-window.addEventListener("resize", () => {
-    if (!isMobileDevice()) location.reload();
-})
+    new ScrollMagic.Scene({
+        triggerElement: "#pinContainer",
+        triggerHook: "onLeave",
+        duration: "1650%"
+    }).setPin("#pinContainer")
+        .setTween(wipeAnimation)
+        .addTo(sliderController);
 
-function isMobileDevice() {
-    return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
-};
+    window.addEventListener("resize", () => {
+        if (!isMobileDevice()) location.reload();
+    })
+
+    function isMobileDevice() {
+        return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
+    };
+}
