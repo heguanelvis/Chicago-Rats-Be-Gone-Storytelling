@@ -9,19 +9,22 @@ import { TimelineMax } from "gsap";
 
 import * as d3 from "d3";
 import StepChart from "./charts/step";
+import DonutChart from "./charts/donut";
 
 /* Images */
 let favicon = document.getElementById('favicon');
 favicon.href = ratfavi;
 
 /* Data */
-const files = ["data/chicago_5_year_complaints_by_date.json"];
+const files = ["data/chicago_5_year_complaints_by_date.json", "data/chicago_premise_indicators.json"];
 
 /* Plot */
 Promise.all(files.map(path => d3.json(path)))
     .then(res => {
         /* Data Naming */
         const complaintsFiveYear = res[0];
+        const premiseIndicators = res[1];
+        console.log(premiseIndicators);
 
         /* US Map*/
 
@@ -32,12 +35,22 @@ Promise.all(files.map(path => d3.json(path)))
         let stepCanvas = d3.select("#chart2")
             .append("svg")
             .attr("width", stepWidth)
-            .attr("height", stepHeight)
+            .attr("height", stepHeight);
         const stepChart = new StepChart(complaintsFiveYear, stepCanvas, stepWidth, stepHeight, stepMargin);
         stepChart.grapher();
         responsivefy(stepChart.canvas);
 
         /* Donut Chart */
+        const donutMargin = { left: 75, right: 75, top: 75, bottom: 75 }
+        const donutWidth = 1000;
+        const donutHeight = 700;
+        const donutRadius = 250;
+        let donutCanvas = d3.select("#chart3")
+            .append("svg")
+            .attr("width", donutWidth)
+            .attr("height", donutHeight);
+        const donutChart = new DonutChart(premiseIndicators, donutCanvas, donutWidth, donutHeight, donutMargin, donutRadius);
+        donutChart.grapher();
     })
     .catch(err => {
         alert("Something went wrong...");
