@@ -1,4 +1,5 @@
 import * as d3 from "d3";
+import { legendColor } from "d3-svg-legend";
 
 export default class donutChart {
     constructor(data, canvas, width, height, margin, radius) {
@@ -37,8 +38,23 @@ export default class donutChart {
         this.color = d3.scaleOrdinal(d3["schemeSet3"]);
     }
 
+    graphLegend() {
+        this.legendGroup = this.canvas.append("g")
+            .attr("transform", `translate(${this.graphWidth * 0.9}, 0)`);
+        
+        this.legend = legendColor()
+            .shape("circle")
+            .shapePadding(5)
+            .scale(this.color)
+            .labelAlign("start");
+    
+    }
+
     update() {
         this.color.domain(this.data.map(d => d.Indicators));
+        this.legendGroup.call(this.legend);
+        this.legendGroup.selectAll("text").attr("fill", "white");
+
         this.paths = this.graph.selectAll("path")
             .data(this.pie(this.data));
 
@@ -55,6 +71,7 @@ export default class donutChart {
         this.graphPie();
         this.graphArcPath();
         this.graphScales();
+        this.graphLegend();
         this.update();
     }
 }
