@@ -8,6 +8,7 @@ import 'imports-loader?define=>false!scrollmagic/scrollmagic/uncompressed/plugin
 import { TimelineMax } from "gsap";
 
 import * as d3 from "d3";
+import MapChart from "./charts/usMap";
 import StepChart from "./charts/step";
 import DonutChart from "./charts/donut";
 
@@ -16,7 +17,7 @@ let favicon = document.getElementById('favicon');
 favicon.href = ratfavi;
 
 /* Data */
-const files = ["data/chicago_5_year_complaints_by_date.json", "data/chicago_premise_indicators.json"];
+const files = ["data/chicago_5_year_complaints_by_date.json", "data/chicago_premise_indicators.json", "data/us-states.json", "data/usRats_by_state.json"];
 
 /* Plot */
 Promise.all(files.map(path => d3.json(path)))
@@ -24,9 +25,19 @@ Promise.all(files.map(path => d3.json(path)))
         /* Data Naming */
         const complaintsFiveYear = res[0];
         const premiseIndicators = res[1];
-        console.log(premiseIndicators);
+        const usStates = res[2];
+        const usRats = res[3];
+        console.log(usRats);
 
         /* US Map*/
+        const mapMargin = { left: 75, right: 75, top: 75, bottom: 75 }
+        const mapWidth = 1000;
+        const mapHeight = 700;
+        let mapCanvas = d3.select("#chart1")
+            .append("svg")
+            .attr("width", mapWidth)
+            .attr("height", mapHeight);
+        const mapChart = new MapChart(usStates, usRats, mapCanvas, mapWidth, mapHeight, mapMargin);
 
         /* Step Chart */
         const stepMargin = { left: 75, right: 75, top: 75, bottom: 75 }
