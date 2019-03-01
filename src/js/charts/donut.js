@@ -130,7 +130,7 @@ export default class donutChart {
         this.graph.append("text")
             .html(() => "Source: <a class='chart-source' href='https://data.cityofchicago.org/Service-Requests/311-Service-Requests-Rodent-Baiting-No-Duplicates/uqhs-j723'>Chicago Data Portal</a>")
             .attr("text-anchor", "middle")
-            .attr("transform", `translate(${this.width * 0.3}, ${(this.height + this.margin.top) * 0.4})`)
+            .attr("transform", `translate(${this.width * 0.25}, ${(this.height + this.margin.top) * 0.38})`)
             .attr("font-size", "14")
             .attr("fill", "white");
     }
@@ -145,13 +145,13 @@ export default class donutChart {
 
         paths.exit()
             .attr("fill", d => this.color(d.data.Indicators))
-            .transition().duration(1500)
+            .transition().duration(750)
             .attrTween("d", d => {console.log(d); this.arcTweenExit(d, this.arcPath)})
             .remove();
 
         paths.attr("d", this.arcPath)
             .attr("fill", d => this.color(d.data.Indicators))
-            .transition().duration(1500)
+            .transition().duration(750)
             .attrTween("d", d => this.arcTweenUpdate(d, this.arcPath));
 
         paths.enter()
@@ -161,7 +161,7 @@ export default class donutChart {
             .attr("stroke-width", 3)
             .attr("fill", d => this.color(d.data.Indicators))
             .each((d, i, n) => n[i]._current = d)
-            .transition().duration(1500)
+            .transition().duration(750)
             .attrTween("d", d => this.arcTweenEnter(d, this.arcPath));
 
         this.graph.selectAll("path")
