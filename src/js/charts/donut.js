@@ -116,7 +116,7 @@ export default class donutChart {
         this.graph.append("text")
             .text("Most Rat Complaints Are Filled at Baited Premises with Garbage and Rats")
             .attr("text-anchor", "middle")
-            .attr("transform", `translate(${this.width * 0.03}, ${this.height/ -1.8})`)
+            .attr("transform", `translate(${this.width * 0.03}, ${this.height/ -1.85})`)
             .attr("font-size", "20")
             .attr("fill", "white");
 
@@ -130,7 +130,7 @@ export default class donutChart {
         this.graph.append("text")
             .html(() => "Source: <a class='chart-source' href='https://data.cityofchicago.org/Service-Requests/311-Service-Requests-Rodent-Baiting-No-Duplicates/uqhs-j723'>Chicago Data Portal</a>")
             .attr("text-anchor", "middle")
-            .attr("transform", `translate(${this.width * 0.25}, ${(this.height + this.margin.top) * 0.38})`)
+            .attr("transform", `translate(${this.width * 0.}, ${(this.height + this.margin.top) * 0.38})`)
             .attr("font-size", "14")
             .attr("fill", "white");
     }
