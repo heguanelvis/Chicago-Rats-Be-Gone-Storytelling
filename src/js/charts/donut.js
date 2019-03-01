@@ -79,13 +79,36 @@ export default class donutChart {
     };
 
     handleClick(d, i, n) {
-        this.data.splice(i, 1)
-        console.log(this.data);
+        this.data = this.data.filter(e => e.Indicators !== d.data.Indicators)
         if (this.data.length >= 2) {
-            this.legendGroup.remove();
-            this.grapher();
+            this.update();
         } else {
-            alert("You have to have at least two indicators to compare.");
+            alert("You must have at least two indicators to compare.");
+        }
+    }
+
+    arcTweenEnter(d, arcPath) {
+        let i = d3.interpolate(d.endAngle, d.startAngle);
+
+        return function (t) {
+            d.startAngle = i(t);
+            return arcPath(d);
+        }
+    }
+
+    arcTweenExit(d, arcPath) {
+        let i = d3.interpolate(d.startAngle, d.endAngle);
+        return function (t) {
+            d.startAngle = i(t);
+            return arcPath(d);
+        }
+    }
+
+    arcTweenUpdate(d, arcPath) {
+        let i = d3.interpolate(this._current, d);
+        this._current = i(1);
+        return function (t) {
+            return arcPath(i(t))
         }
     }
 
@@ -94,18 +117,29 @@ export default class donutChart {
         this.legendGroup.call(this.legend);
         this.legendGroup.selectAll("text").attr("fill", "white");
 
-        this.paths = this.graph.selectAll("path")
+        const paths = this.graph.selectAll("path")
             .data(this.pie(this.data));
 
-        this.paths.enter()
+        paths.exit()
+            .attr("fill", d => this.color(d.data.Indicators))
+            .transition().duration(1500)
+            .attrTween("d", d => {console.log(d); this.arcTweenExit(d, this.arcPath)})
+            .remove();
+
+        paths.attr("d", this.arcPath)
+            .attr("fill", d => this.color(d.data.Indicators))
+            .transition().duration(1500)
+            .attrTween("d", d => this.arcTweenUpdate(d, this.arcPath));
+
+        paths.enter()
             .append("path")
             .attr("d", this.arcPath)
             .attr("stroke", "#fff")
             .attr("stroke-width", 3)
-            .attr("fill", d => this.color(d.data.Indicators));
-
-        this.paths.exit()
-            .remove();
+            .attr("fill", d => this.color(d.data.Indicators))
+            .each((d, i, n) => n[i]._current = d)
+            .transition().duration(1500)
+            .attrTween("d", d => this.arcTweenEnter(d, this.arcPath));
 
         this.graph.selectAll("path")
             .on("mouseover", this.handleMouseOver.bind(this))
