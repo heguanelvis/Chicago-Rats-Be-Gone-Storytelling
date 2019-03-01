@@ -47,7 +47,22 @@ export default class donutChart {
             .shapePadding(5)
             .scale(this.color)
             .labelAlign("start");
-    
+    }
+
+    handleMouseOver(d, i, n) {
+        const centroid = this.arcPath.centroid(d)
+        this.graph.append("text")
+            .attr("id", `t-${d.Indicators}-${d.Count}-${i}`)
+            .attr("x", centroid[0])
+            .attr("y", centroid[1] - 100)
+            .text(`${d.data.Indicators}: ${d.data.Count}`)
+            .attr("font-size", "14")
+            .attr("fill", "gray");
+    }
+
+    handleMouseOut(d, i, n) {
+        d3.select(`#t-${d.Indicators}-${d.Count}-${i}`)
+            .remove();
     }
 
     update() {
@@ -64,6 +79,10 @@ export default class donutChart {
             .attr("stroke", "#fff")
             .attr("stroke-width", 3)
             .attr("fill", d => this.color(d.data.Indicators));
+
+        this.graph.selectAll("path")
+            .on("mouseover", this.handleMouseOver.bind(this))
+            .on("mouseout", this.handleMouseOut)
     }
 
     grapher() {

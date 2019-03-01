@@ -117,9 +117,9 @@ export default class StepChart {
 
         this.graph.append("text")
             .attr("id", `t-${d.date}-${d.count}-${i}`)
-            .attr("x", () => this.x(new Date(d.date)) - 30)
-            .attr("y", () => this.y(d.count) - 15)
-            .text(() => `${months[(new Date(d.date)).getMonth()]}: ${d.count}`)
+            .attr("x", this.x(new Date(d.date)) - 30)
+            .attr("y", this.y(d.count) - 15)
+            .text(`${months[(new Date(d.date)).getMonth()]}: ${d.count}`)
             .attr("font-size", "14")
             .attr("fill", "gray");
     }
