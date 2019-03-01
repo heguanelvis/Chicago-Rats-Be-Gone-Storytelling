@@ -76,6 +76,14 @@ html, body {
 
     &:nth-of-type(4) {
         background: rgb(156,85,165);
+        .donut-tip {
+            display: inline-block;
+            text-align: center;
+            border-radius: 30%;
+            padding: 0.5rem;
+            background: #333;
+            color: #fff;
+        }
         @include mobile {
             min-height: 800px;
         }

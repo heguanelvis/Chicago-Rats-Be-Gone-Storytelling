@@ -84,6 +84,15 @@ html .row, body .row {
   background: #9c55a5;
 }
 
+.story-section:nth-of-type(4) .donut-tip {
+  display: inline-block;
+  text-align: center;
+  border-radius: 30%;
+  padding: 0.5rem;
+  background: #333;
+  color: #fff;
+}
+
 @media (max-width: 540px) {
   .story-section:nth-of-type(4) {
     min-height: 800px;

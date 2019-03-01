@@ -44,7 +44,7 @@ Promise.all(files.map(path => d3.json(path)))
         const donutMargin = { left: 75, right: 75, top: 75, bottom: 75 }
         const donutWidth = 1000;
         const donutHeight = 700;
-        const donutRadius = 250;
+        const donutRadius = 300;
         let donutCanvas = d3.select("#chart3")
             .append("svg")
             .attr("width", donutWidth)

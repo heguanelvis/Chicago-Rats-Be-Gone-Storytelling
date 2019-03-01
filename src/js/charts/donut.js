@@ -11,8 +11,8 @@ export default class donutChart {
         this.graphWidth = this.width - this.margin.left - this.margin.right;
         this.graphHeight = this.height - this.margin.top - this.margin.bottom;
         this.center = {
-            x: this.graphWidth / 2 + this.margin.left,
-            y: this.graphHeight / 2 + this.margin.top
+            x: this.graphWidth / 2 + 2.3 * this.margin.left,
+            y: this.graphHeight / 2 + 1.7 * this.margin.top
         }
         this.radius = radius;
     }
@@ -40,7 +40,7 @@ export default class donutChart {
 
     graphLegend() {
         this.legendGroup = this.canvas.append("g")
-            .attr("transform", `translate(${this.graphWidth * 0.9}, 0)`);
+            .attr("transform", `translate(${2 * this.margin.left}, 0)`);
         
         this.legend = legendColor()
             .shape("circle")
@@ -51,13 +51,18 @@ export default class donutChart {
 
     handleMouseOver(d, i, n) {
         const centroid = this.arcPath.centroid(d)
-        this.graph.append("text")
+        this.graph.append("foreignObject")
+            .attr("width", 190)
+            .attr("height", 100)
             .attr("id", `t-${d.Indicators}-${d.Count}-${i}`)
             .attr("x", centroid[0])
-            .attr("y", centroid[1] - 100)
-            .text(`${d.data.Indicators}: ${d.data.Count}`)
-            .attr("font-size", "14")
-            .attr("fill", "gray");
+            .attr("y", centroid[1] - 180)
+            .html(() => {
+                let content = `<div class="donut-tip"><div class="donut-indicators">${d.data.Indicators}</div>`;
+                content += `<div class="donut-count">${d.data.Count}</div>`;
+                content += `<div class="delete">Click slice to delete</div></div>`;
+                return content;
+            })
     }
 
     handleMouseOut(d, i, n) {
