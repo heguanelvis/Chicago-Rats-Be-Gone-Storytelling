@@ -40,7 +40,7 @@ export default class donutChart {
 
     graphLegend() {
         this.legendGroup = this.canvas.append("g")
-            .attr("transform", `translate(${2 * this.margin.left}, 0)`);
+            .attr("transform", `translate(${2 * this.margin.left}, ${0.1 * this.height})`);
         
         this.legend = legendColor()
             .shape("circle")
@@ -112,6 +112,29 @@ export default class donutChart {
         }
     }
 
+    graphInfo() {
+        this.graph.append("text")
+            .text("Number of Rat Complaints Peaked in 2017 and Appeared to Have a Seasonal Pattern")
+            .attr("text-anchor", "middle")
+            .attr("transform", `translate(${this.width * 0.03}, ${this.height/ -1.8})`)
+            .attr("font-size", "20")
+            .attr("fill", "white");
+
+        this.graph.append("text")
+            .text("Monthly rat complaint counts from 2014 to 2018 in Chicago")
+            .attr("text-anchor", "middle")
+            .attr("transform", `translate(${this.width * 0.03}, ${this.height / -2})`)
+            .attr("font-size", "16")
+            .attr("fill", "white");
+
+        this.graph.append("text")
+            .html(() => "Source: <a class='chart-source' href='https://data.cityofchicago.org/Service-Requests/311-Service-Requests-Rodent-Baiting-No-Duplicates/uqhs-j723'>Chicago Data Portal</a>")
+            .attr("text-anchor", "middle")
+            .attr("transform", `translate(${this.width * 0.3}, ${(this.height + this.margin.top) * 0.4})`)
+            .attr("font-size", "14")
+            .attr("fill", "white");
+    }
+    
     update() {
         this.color.domain(this.data.map(d => d.Indicators));
         this.legendGroup.call(this.legend);
@@ -153,6 +176,7 @@ export default class donutChart {
         this.graphArcPath();
         this.graphScales();
         this.graphLegend();
+        this.graphInfo();
         this.update();
     };
 };
