@@ -114,14 +114,14 @@ export default class donutChart {
 
     graphInfo() {
         this.graph.append("text")
-            .text("Number of Rat Complaints Peaked in 2017 and Appeared to Have a Seasonal Pattern")
+            .text("Most Rat Complaints Are Filled at Baited Premises with Garbage and Rats")
             .attr("text-anchor", "middle")
             .attr("transform", `translate(${this.width * 0.03}, ${this.height/ -1.8})`)
             .attr("font-size", "20")
             .attr("fill", "white");
 
         this.graph.append("text")
-            .text("Monthly rat complaint counts from 2014 to 2018 in Chicago")
+            .text("Premises with garbage seem to be more related with rat complaints in Chicago")
             .attr("text-anchor", "middle")
             .attr("transform", `translate(${this.width * 0.03}, ${this.height / -2})`)
             .attr("font-size", "16")

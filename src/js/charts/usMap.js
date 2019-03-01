@@ -17,8 +17,6 @@ export default class MapChart {
             .attr("tranform", `translate(${this.margin.left}, ${this.margin.top})`);
     };
 
-
-
     grapher() {
         this.graphSetup();
 

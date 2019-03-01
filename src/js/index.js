@@ -61,7 +61,7 @@ Promise.all(files.map(path => d3.json(path)))
             .attr("width", donutWidth)
             .attr("height", donutHeight);
         const donutChart = new DonutChart(premiseIndicators, donutCanvas, donutWidth, donutHeight, donutMargin, donutRadius);
-        donutChart.grapher();
+        animateChart(".donut", donutChart);
         responsivefy(donutChart.canvas);
     })
     .catch(err => {
