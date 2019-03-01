@@ -93,6 +93,10 @@ html .row, body .row {
   color: #fff;
 }
 
+.story-section:nth-of-type(4) .donut-tip .delete {
+  color: hotpink;
+}
+
 @media (max-width: 540px) {
   .story-section:nth-of-type(4) {
     min-height: 800px;

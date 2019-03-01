@@ -15,28 +15,28 @@ export default class donutChart {
             y: this.graphHeight / 2 + 1.7 * this.margin.top
         }
         this.radius = radius;
-    }
+    };
 
     graphSetup() {
         this.graph = this.canvas.append("g")
             .attr("transform", `translate(${this.center.x}, ${this.center.y})`);
-    }
+    };
 
     graphPie() {
         this.pie = d3.pie()
             .sort(null)
             .value(d => d.Count);
-    }
+    };
 
     graphArcPath() {
         this.arcPath = d3.arc()
             .outerRadius(this.radius)
             .innerRadius(this.radius / 2);
-    }
+    };
 
     graphScales() {
         this.color = d3.scaleOrdinal(d3["schemeSet3"]);
-    }
+    };
 
     graphLegend() {
         this.legendGroup = this.canvas.append("g")
@@ -46,11 +46,15 @@ export default class donutChart {
             .shape("circle")
             .shapePadding(5)
             .scale(this.color)
-            .labelAlign("start");
-    }
+    };
 
     handleMouseOver(d, i, n) {
-        const centroid = this.arcPath.centroid(d)
+        d3.select(n[i])
+            .transition("changeSliceFill").duration(300)
+            .attr("fill", "#fff");
+
+        const centroid = this.arcPath.centroid(d);
+
         this.graph.append("foreignObject")
             .attr("width", 190)
             .attr("height", 100)
@@ -60,14 +64,29 @@ export default class donutChart {
             .html(() => {
                 let content = `<div class="donut-tip"><div class="donut-indicators">${d.data.Indicators}</div>`;
                 content += `<div class="donut-count">${d.data.Count}</div>`;
-                content += `<div class="delete">Click slice to delete</div></div>`;
+                content += `<div class="delete">Click slice to remove</div></div>`;
                 return content;
-            })
-    }
+            });
+    };
 
     handleMouseOut(d, i, n) {
+        d3.select(n[i])
+            .transition("changeSliceFill").duration(300)
+            .attr("fill", this.color(d.data.Indicators));
+
         d3.select(`#t-${d.Indicators}-${d.Count}-${i}`)
             .remove();
+    };
+
+    handleClick(d, i, n) {
+        this.data.splice(i, 1)
+        console.log(this.data);
+        if (this.data.length >= 2) {
+            this.legendGroup.remove();
+            this.grapher();
+        } else {
+            alert("You have to have at least two indicators to compare.");
+        }
     }
 
     update() {
@@ -85,10 +104,14 @@ export default class donutChart {
             .attr("stroke-width", 3)
             .attr("fill", d => this.color(d.data.Indicators));
 
+        this.paths.exit()
+            .remove();
+
         this.graph.selectAll("path")
             .on("mouseover", this.handleMouseOver.bind(this))
-            .on("mouseout", this.handleMouseOut)
-    }
+            .on("mouseout", this.handleMouseOut.bind(this))
+            .on("click", this.handleClick.bind(this));
+    };
 
     grapher() {
         this.graphSetup();
@@ -97,8 +120,8 @@ export default class donutChart {
         this.graphScales();
         this.graphLegend();
         this.update();
-    }
-}
+    };
+};
 
 /*
 export default class StepChart {

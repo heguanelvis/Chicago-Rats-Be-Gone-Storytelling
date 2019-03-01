@@ -83,6 +83,10 @@ html, body {
             padding: 0.5rem;
             background: #333;
             color: #fff;
+
+            .delete {
+                color: hotpink;
+            }
         }
         @include mobile {
             min-height: 800px;
