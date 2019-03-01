@@ -37,7 +37,7 @@ Promise.all(files.map(path => d3.json(path)))
             .attr("width", stepWidth)
             .attr("height", stepHeight);
         const stepChart = new StepChart(complaintsFiveYear, stepCanvas, stepWidth, stepHeight, stepMargin);
-        stepChart.grapher();
+        animateChart(".step", stepChart);
         responsivefy(stepChart.canvas);
 
         /* Donut Chart */
@@ -57,6 +57,11 @@ Promise.all(files.map(path => d3.json(path)))
         alert("Something went wrong...");
         console.log(err);
     });
+
+/* Animate Chart Control */
+function animateChart(selector, chart) {
+    document.querySelector(selector).addEventListener("mouseover", () => chart.grapher(), { once: true })
+}
 
 /* Responsive Control */
 function responsivefy(svg) {

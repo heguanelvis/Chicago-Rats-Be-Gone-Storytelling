@@ -67,12 +67,12 @@ export default class StepChart {
             .attr("stroke-dashoffset", l);
 
         this.timePath.transition()
-            .duration(5000)
+            .duration(7000)
             .attr("stroke-dashoffset", 0);
 
         setTimeout(() => {
             this.graphCircles()
-        }, 5000);
+        }, 7000);
     }
 
     graphCircles() {
