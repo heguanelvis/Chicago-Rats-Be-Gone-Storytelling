@@ -27,17 +27,19 @@ Promise.all(files.map(path => d3.json(path)))
         const premiseIndicators = res[1];
         const usStates = res[2];
         const usRats = res[3];
-        console.log(usRats);
 
         /* US Map*/
         const mapMargin = { left: 75, right: 75, top: 75, bottom: 75 }
         const mapWidth = 1000;
         const mapHeight = 700;
+        const mapScale = 1000;
         let mapCanvas = d3.select("#chart1")
             .append("svg")
             .attr("width", mapWidth)
             .attr("height", mapHeight);
-        const mapChart = new MapChart(usStates, usRats, mapCanvas, mapWidth, mapHeight, mapMargin);
+        const mapChart = new MapChart(usStates, usRats, mapCanvas, mapWidth, mapHeight, mapMargin, mapScale);
+        mapChart.grapher();
+        responsivefy(mapChart.canvas);
 
         /* Step Chart */
         const stepMargin = { left: 75, right: 75, top: 75, bottom: 75 }
