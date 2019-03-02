@@ -27,34 +27,34 @@ export default class MapChart {
     }
 
     graphMap() {
-        console.log(this.dataStates);
-        console.log(this.dataRats);
         this.graph.selectAll("path")
             .data(this.dataStates.features)
             .enter()
             .append("path")
             .attr("d", this.geoGenerator)
             .style("stroke", "#fff")
-            .style("stroke-width", "2")
-            .attr("fill", "rgba(0, 0, 0, 0)")
+            .style("stroke-width", 2)
+            .attr("fill", "rgba(0, 0, 0, 0)");
     };
+
+    graphCircles() {
+        this.graph.selectAll("circle")
+            .data(this.dataRats)
+            .enter()
+            .append("circle")
+            .attr("cx", d => this.projection([d.longitude, d.latitude])[0])
+            .attr("cy", d => this.projection([d.longitude, d.latitude])[1])
+            .attr("r", d => Math.sqrt(d.rats_capita) * 0.7)
+            .attr("fill", "red")
+            .attr("stroke", "#fff")
+            .attr("stroke-width", 1)
+            .style("opacity", "0.8");
+    }
 
     grapher() {
         this.graphSetup();
         this.graphProjection();
         this.graphMap();
+        this.graphCircles();
     };
 };
-
-/*
-var projection = d3.geo.albersUsa()
-    .scale(1000)
-    .translate([width / 2, height / 2]);
-
-var path = d3.geo.path()
-    .projection(projection);
-
-var svg = d3.select("body").append("svg")
-    .attr("width", width)
-    .attr("height", height);
-*/

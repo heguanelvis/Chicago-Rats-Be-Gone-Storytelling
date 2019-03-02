@@ -74,7 +74,7 @@ Promise.all(files.map(path => d3.json(path)))
 /* Animate Chart Control */
 function animateChart(selector, chart) {
     document.querySelector(selector).addEventListener("mouseover", () => chart.grapher(), { once: true })
-}
+};
 
 /* Responsive Control */
 function responsivefy(svg) {
@@ -93,8 +93,8 @@ function responsivefy(svg) {
         let targetWidth = parseInt(container.style("width"));
         svg.attr("width", targetWidth - 30);
         svg.attr("height", Math.round(targetWidth / aspect));
-    }
-}
+    };
+};
 
 /* Slider Control */
 {
@@ -110,7 +110,7 @@ function responsivefy(svg) {
         .fromTo(".story-section.step", 1, { y: "0" }, { y: "-100%", ease: Linear.easeNone })
         .to("#pinContainer", 1, { z: -100 })
         .fromTo(".story-section.donut", 1, { y: "-100%" }, { y: "0%", ease: Linear.easeNone })
-        .to("#pinContainer", 1, { z: 0 })
+        .to("#pinContainer", 1, { z: 0 });
 
     new ScrollMagic.Scene({
         triggerElement: "#pinContainer",
@@ -122,7 +122,7 @@ function responsivefy(svg) {
 
     window.addEventListener("resize", () => {
         if (!isMobileDevice()) location.reload();
-    })
+    });
 
     function isMobileDevice() {
         return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);

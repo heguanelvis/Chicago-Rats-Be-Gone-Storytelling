@@ -9,12 +9,12 @@ export default class StepChart {
         this.margin = margin;
         this.graphWidth = this.width - this.margin.left - this.margin.right;
         this.graphHeight = this.height - this.margin.top - this.margin.bottom;
-    }
+    };
 
     graphSetup() {
         this.graph = this.canvas.append("g")
             .attr("tranform", `translate(${this.margin.left}, ${this.margin.top})`);
-    }
+    };
 
     graphScales() {
         const dateExtent = d3.extent(this.data, d => d.date)
@@ -30,7 +30,7 @@ export default class StepChart {
             .domain([0, countMax])
             .range([this.graphHeight + this.margin.top, this.margin.top])
             .nice();
-    }
+    };
 
     graphAxes() {
         const xAxisGroup = this.graph.append("g")
@@ -46,7 +46,7 @@ export default class StepChart {
             .attr("class", "ticks");  // classes need to be added
         yAxisGroup.call(yAxis)
             .attr("class", "ticks");
-    }
+    };
 
     graphLine() {
         const timeLine = d3.line()
@@ -73,7 +73,7 @@ export default class StepChart {
         setTimeout(() => {
             this.graphCircles()
         }, 7000);
-    }
+    };
 
     graphCircles() {
         let circles = this.graph.selectAll("circle")
@@ -92,7 +92,7 @@ export default class StepChart {
 
         circles.on("mouseover", this.handleMouseOver.bind(this))
             .on("mouseout", this.handleMouseOut);
-    }
+    };
 
     handleMouseOver(d, i, n) {
         const months = [
@@ -122,7 +122,7 @@ export default class StepChart {
             .text(`${months[(new Date(d.date)).getMonth()]}: ${d.count}`)
             .attr("font-size", "14")
             .attr("fill", "gray");
-    }
+    };
 
     handleMouseOut(d, i, n) {
         d3.select(this)
@@ -132,7 +132,7 @@ export default class StepChart {
 
         d3.select(`#t-${d.date}-${d.count}-${i}`)
             .remove();
-    }
+    };
 
     graphAxesLabel() {
         this.graph.append("text")
@@ -148,7 +148,7 @@ export default class StepChart {
             .attr("transform", `translate(${this.margin.left / 3}, ${this.height / 1.9})rotate(-90)`)
             .attr("font-size", "14")
             .attr("fill", "white");
-    }
+    };
 
     graphInfo() {
         this.graph.append("text")
@@ -171,7 +171,7 @@ export default class StepChart {
             .attr("transform", `translate(${this.width / 1.19}, ${this.height - this.margin.bottom / 5})`)
             .attr("font-size", "14")
             .attr("fill", "white");
-    }
+    };
 
     grapher() {
         this.graphSetup();
@@ -180,7 +180,7 @@ export default class StepChart {
         this.graphAxesLabel();
         this.graphInfo();
         this.graphLine();
-    }
+    };
 }
 
 
