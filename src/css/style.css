@@ -93,7 +93,7 @@ html .row, body .row {
   color: #fff;
 }
 
-.story-section:nth-of-type(4) .donut-tip .delete {
+.story-section:nth-of-type(4) .donut-tip .donut-indicators {
   color: hotpink;
 }
 

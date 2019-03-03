@@ -60,11 +60,10 @@ export default class donutChart {
             .attr("height", 100)
             .attr("id", `t-${d.Indicators}-${d.Count}-${i}`)
             .attr("x", centroid[0])
-            .attr("y", centroid[1] - 180)
+            .attr("y", centroid[1] - 160)
             .html(() => {
                 let content = `<div class="donut-tip"><div class="donut-indicators">${d.data.Indicators}</div>`;
                 content += `<div class="donut-count">${d.data.Count}</div>`;
-                content += `<div class="delete">Click slice to remove</div></div>`;
                 return content;
             });
     };
@@ -78,37 +77,12 @@ export default class donutChart {
             .remove();
     };
 
-    handleClick(d, i, n) {
-        this.data = this.data.filter(e => e.Indicators !== d.data.Indicators)
-        if (this.data.length >= 2) {
-            this.update();
-        } else {
-            alert("You must have at least two indicators to compare.");
-        };
-    };
-
     arcTweenEnter(d, arcPath) {
         let i = d3.interpolate(d.endAngle, d.startAngle);
 
         return function (t) {
             d.startAngle = i(t);
             return arcPath(d);
-        };
-    };
-
-    arcTweenExit(d, arcPath) {
-        let i = d3.interpolate(d.startAngle, d.endAngle);
-        return function (t) {
-            d.startAngle = i(t);
-            return arcPath(d);
-        };
-    };
-
-    arcTweenUpdate(d, arcPath) {
-        let i = d3.interpolate(this._current, d);
-        this._current = i(1);
-        return function (t) {
-            return arcPath(i(t));
         };
     };
 
@@ -135,7 +109,7 @@ export default class donutChart {
             .attr("fill", "white");
     }
     
-    update() {
+    makeDonut() {
         this.color.domain(this.data.map(d => d.Indicators));
         this.legendGroup.call(this.legend);
         this.legendGroup.selectAll("text").attr("fill", "white");
@@ -143,31 +117,19 @@ export default class donutChart {
         const paths = this.graph.selectAll("path")
             .data(this.pie(this.data));
 
-        paths.exit()
-            .attr("fill", d => this.color(d.data.Indicators))
-            .transition().duration(750)
-            .attrTween("d", d => {console.log(d); this.arcTweenExit(d, this.arcPath)})
-            .remove();
-
-        paths.attr("d", this.arcPath)
-            .attr("fill", d => this.color(d.data.Indicators))
-            .transition().duration(750)
-            .attrTween("d", d => this.arcTweenUpdate(d, this.arcPath));
-
         paths.enter()
             .append("path")
             .attr("d", this.arcPath)
             .attr("stroke", "#fff")
             .attr("stroke-width", 3)
+            .attr("class", "cursor-pointer")
             .attr("fill", d => this.color(d.data.Indicators))
-            .each((d, i, n) => n[i]._current = d)
             .transition().duration(750)
             .attrTween("d", d => this.arcTweenEnter(d, this.arcPath));
 
         this.graph.selectAll("path")
             .on("mouseover", this.handleMouseOver.bind(this))
-            .on("mouseout", this.handleMouseOut.bind(this))
-            .on("click", this.handleClick.bind(this));
+            .on("mouseout", this.handleMouseOut.bind(this));
     };
 
     grapher() {
@@ -177,6 +139,6 @@ export default class donutChart {
         this.graphScales();
         this.graphLegend();
         this.graphInfo();
-        this.update();
+        this.makeDonut();
     };
 };

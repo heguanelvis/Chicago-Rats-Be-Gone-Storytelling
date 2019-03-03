@@ -24,7 +24,7 @@ export default class MapChart {
             .scale([this.scale]);
     
         this.geoGenerator = d3.geoPath(this.projection);
-    }
+    };
 
     graphMap() {
         this.graph.selectAll("path")
@@ -48,8 +48,9 @@ export default class MapChart {
             .attr("fill", "red")
             .attr("stroke", "#fff")
             .attr("stroke-width", 1)
+            .attr("class", "cursor-pointer")
             .style("opacity", "0.8");
-    }
+    };
 
     grapher() {
         this.graphSetup();
