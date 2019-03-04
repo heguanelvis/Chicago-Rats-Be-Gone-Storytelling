@@ -5,7 +5,6 @@ import ratfavi from "../img/ratfavi.png";
 
 import ScrollMagic from 'scrollmagic';
 import 'imports-loader?define=>false!scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap';
-import { TimelineMax } from "gsap";
 
 import * as d3 from "d3";
 import MapChart from "./charts/usMap";
