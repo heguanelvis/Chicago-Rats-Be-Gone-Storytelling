@@ -38,7 +38,7 @@ Promise.all(files.map(path => d3.json(path)))
             .attr("width", mapWidth)
             .attr("height", mapHeight);
         const mapChart = new MapChart(usStates, usRats, mapCanvas, mapWidth, mapHeight, mapMargin, mapScale);
-        mapChart.grapher();
+        animateChart(".us-map", mapChart);
         responsivefy(mapChart.canvas);
 
         /* Step Chart */

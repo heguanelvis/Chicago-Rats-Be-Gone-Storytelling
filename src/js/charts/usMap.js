@@ -44,6 +44,8 @@ export default class MapChart {
             .append("circle")
             .attr("cx", d => this.projection([d.longitude, d.latitude])[0])
             .attr("cy", d => this.projection([d.longitude, d.latitude])[1])
+            .transition()
+            .duration(4000)
             .attr("r", d => Math.sqrt(d.rats_capita) * 0.7)
             .attr("fill", "red")
             .attr("stroke", "#fff")
