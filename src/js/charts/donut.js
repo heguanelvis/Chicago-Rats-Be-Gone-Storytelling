@@ -124,7 +124,7 @@ export default class donutChart {
             .attr("stroke-width", 3)
             .attr("class", "cursor-pointer")
             .attr("fill", d => this.color(d.data.Indicators))
-            .transition().duration(750)
+            .transition().duration(1250)
             .attrTween("d", d => this.arcTweenEnter(d, this.arcPath));
 
         this.graph.selectAll("path")

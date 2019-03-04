@@ -62,3 +62,6 @@ typings/
 
 # dist for development
 dist
+
+# ds_store for mac
+.DS_Store

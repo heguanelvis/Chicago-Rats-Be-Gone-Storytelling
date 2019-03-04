@@ -73,7 +73,10 @@ Promise.all(files.map(path => d3.json(path)))
 
 /* Animate Chart Control */
 function animateChart(selector, chart) {
-    document.querySelector(selector).addEventListener("mouseover", () => chart.grapher(), { once: true })
+    document.querySelector(selector).addEventListener("mouseover", () => {
+        chart.grapher();
+        TweenMax.fromTo(`${selector} svg`, 1, { scale: 0.5 }, { scale: 1, ease: Linear.easeNone });
+    }, { once: true });
 };
 
 /* Responsive Control */
