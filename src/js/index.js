@@ -16,7 +16,7 @@ let favicon = document.getElementById('favicon');
 favicon.href = ratfavi;
 
 /* Data */
-const files = ["data/chicago_5_year_complaints_by_date.json", "data/chicago_premise_indicators.json", "data/us-states.json", "data/usRats_by_state.json"];
+const files = ["data/chicago_5_year_complaints_by_date.json", "data/chicago_premise_indicators.json", "data/us_states.json", "data/us_rats_by_state.json"];
 
 /* Plot */
 Promise.all(files.map(path => d3.json(path)))
