@@ -74,12 +74,19 @@ html, body {
 }
 
 #pinContainer {
-    height: 100%;
     width: 100%;
+    @include mobile-sm {
+        height: 800px;
+    }
+    @include mobile-lg {
+        height: 900px;
+    }
+    @include ssm {
+        height: 100%;
+    }
 }
 
 .story-section {
-    height: 100%;
     width: 100%;
     color: white;
     position: absolute;
@@ -88,14 +95,16 @@ html, body {
         background: rgb(255,246,141);
         color: rgb(44,62,80);
         @include mobile-sm {
-            padding-top: 15vh;
+            padding-top: 30vh;
             height: 800px;
         }
         @include mobile-lg {
-            padding-top: 15vh;
+            padding-top: 35vh;
             height: 900px;
         }
         @include ssm {
+            height: 100%;
+            padding-top: 0;
             align-items: center;
         }
     }
@@ -109,6 +118,7 @@ html, body {
             height: 900px;
         }
         @include ssm {
+            height: 100%;
             min-height: 620px;
         }
         @include sm {
@@ -137,6 +147,7 @@ html, body {
             height: 900px;
         }
         @include ssm {
+            height: 100%;
             min-height: 620px;
         }
         @include sm {
@@ -177,6 +188,7 @@ html, body {
             height: 900px;
         }
         @include ssm {
+            height: 100%;
             min-height: 620px;
         }
         @include sm {
