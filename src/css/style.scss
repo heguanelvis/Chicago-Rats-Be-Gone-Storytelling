@@ -9,6 +9,7 @@ rgb(44,62,80)
 */
 
 $break-sm: 540px;
+$break-lg: 992px;
 
 @mixin mobile {
     @media (max-width: #{$break-sm}) {
@@ -18,6 +19,12 @@ $break-sm: 540px;
 
 @mixin sm {
    @media (min-width: #{$break-sm}) {
+       @content;
+   }
+}
+
+@mixin lg {
+    @media (min-width: #{$break-lg}) {
        @content;
    }
 }
@@ -60,6 +67,9 @@ html, body {
             min-height: 800px;
         }
         @include sm {
+            min-height: 900px;
+        }
+        @include lg {
             min-height: 700px;
         }
     }
@@ -70,6 +80,9 @@ html, body {
             min-height: 800px;
         }
         @include sm {
+            min-height: 900px;
+        }
+        @include lg {
             min-height: 700px;
         }
     }
@@ -92,6 +105,9 @@ html, body {
             min-height: 800px;
         }
         @include sm {
+            min-height: 930px;
+        }
+        @include lg {
             min-height: 700px;
         }
     }
