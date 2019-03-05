@@ -8,8 +8,11 @@ rgb(255,246,141)
 rgb(44,62,80)
 */
 
-$break-sm: 540px;
+$break-sm: 576px;
 $break-md: 768px;
+$break-lg: 992px;
+$break-xl: 1200px;
+$break-xxl: 1400px;
 
 @mixin mobile {
     @media (max-width: #{$break-sm}) {
@@ -25,6 +28,24 @@ $break-md: 768px;
 
 @mixin md {
     @media (min-width: #{$break-md}) {
+       @content;
+   }
+}
+
+@mixin lg {
+    @media (min-width: #{$break-lg}) {
+       @content;
+   }
+}
+
+@mixin xl {
+    @media (min-width: #{$break-xl}) {
+       @content;
+   }
+}
+
+@mixin xxl {
+    @media (min-width: #{$break-xl}) {
        @content;
    }
 }
@@ -67,10 +88,19 @@ html, body {
             min-height: 800px;
         }
         @include sm {
-            min-height: 950px;
+            min-height: 500px;
         }
         @include md {
-            min-height: 700px;
+            min-height: 450px;
+        }
+        @include lg {
+            min-height: 550px;
+        }
+        @include xl {
+            min-height: 580px;
+        }
+        @include xxl {
+            min-height: 620px;
         }
     }
 
@@ -80,10 +110,19 @@ html, body {
             min-height: 800px;
         }
         @include sm {
-            min-height: 950px;
+            min-height: 500px;
         }
         @include md {
-            min-height: 700px;
+            min-height: 450px;
+        }
+        @include lg {
+            min-height: 550px;
+        }
+        @include xl {
+            min-height: 580px;
+        }
+        @include xxl {
+            min-height: 620px;
         }
     }
 
@@ -105,10 +144,19 @@ html, body {
             min-height: 800px;
         }
         @include sm {
-            min-height: 950px;
+            min-height: 500px;
         }
         @include md {
-            min-height: 700px;
+            min-height: 450px;
+        }
+        @include lg {
+            min-height: 550px;
+        }
+        @include xl {
+            min-height: 580px;
+        }
+        @include xxl {
+            min-height: 620px;
         }
     }
 
