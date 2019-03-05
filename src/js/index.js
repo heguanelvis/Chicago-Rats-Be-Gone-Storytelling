@@ -56,7 +56,7 @@ Promise.all(files.map(path => d3.json(path)))
         const donutMargin = { left: 75, right: 75, top: 75, bottom: 75 }
         const donutWidth = 1000;
         const donutHeight = 700;
-        const donutRadius = 300;
+        const donutRadius = 290;
         let donutCanvas = d3.select("#chart3")
             .append("svg")
             .attr("width", donutWidth)
@@ -93,8 +93,10 @@ function responsivefy(svg) {
 
     function resize() {
         let targetWidth = parseInt(container.style("width"));
-        svg.attr("width", targetWidth - 30);
-        svg.attr("height", Math.round(targetWidth / aspect));
+        if (targetWidth <= 1000) {
+            svg.attr("width", targetWidth - 30);
+            svg.attr("height", Math.round(targetWidth / aspect));
+        }
     };
 };
 
