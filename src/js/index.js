@@ -117,7 +117,7 @@ function responsivefy(svg) {
     new ScrollMagic.Scene({
         triggerElement: "#pinContainer",
         triggerHook: "onLeave",
-        duration: "1650%"
+        duration: "2200%"
     }).setPin("#pinContainer")
         .setTween(wipeAnimation)
         .addTo(sliderController);
