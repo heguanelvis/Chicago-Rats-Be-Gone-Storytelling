@@ -38,13 +38,14 @@ export default class MapChart {
     };
 
     graphCircles() {
-        this.graph.selectAll("circle")
+        let circles = this.graph.selectAll("circle")
             .data(this.dataRats)
             .enter()
             .append("circle")
             .attr("cx", d => this.projection([d.longitude, d.latitude])[0])
-            .attr("cy", d => this.projection([d.longitude, d.latitude])[1])
-            .transition()
+            .attr("cy", d => this.projection([d.longitude, d.latitude])[1]);
+            
+        circles.transition()
             .duration(4000)
             .attr("r", d => Math.sqrt(d.rats_capita) * 0.7)
             .attr("fill", "red")
@@ -52,7 +53,39 @@ export default class MapChart {
             .attr("stroke-width", 1)
             .attr("class", "cursor-pointer")
             .style("opacity", "0.8");
+    
+        circles.on("mouseover", this.handleMouseOver.bind(this))
+            .on("mouseout", this.handleMouseOut);
     };
+
+    handleMouseOver(d, i, n) {
+        console.log(d.longitude);
+        d3.select(n[i])
+            .attr("r", d => Math.sqrt(d.rats_capita) * 0.8)
+            .attr("fill", "orange");
+        
+
+        this.graph.append("text")
+            .attr("id", `t-${d.pop}-${d.rats_capita}-${i}`)
+            .attr("x", this.projection([d.longitude, d.latitude])[0] + 15)
+            .attr("y", this.projection([d.longitude, d.latitude])[1] - 15)
+            .text(`${d.city}: ${d.rats_capita}`)
+            .attr("font-size", "14")
+            .attr("fill", "white");
+    };
+
+    handleMouseOut(d, i, n) {
+        d3.select(this)
+            .attr("r", Math.sqrt(d.rats_capita) * 0.7)
+            .attr("fill", "red")
+            .attr("stroke", "#fff")
+            .attr("stroke-width", 1)
+            .style("opacity", "0.8");
+
+        d3.select(`#t-${d.pop}-${d.rats_capita}-${i}`)
+            .remove();
+    };
+    
 
     graphInfo() {
         this.graph.append("text")
