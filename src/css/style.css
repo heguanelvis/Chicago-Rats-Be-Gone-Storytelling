@@ -60,11 +60,11 @@ html .row, body .row {
 
 @media (min-width: 540px) {
   .story-section:nth-of-type(2) {
-    min-height: 900px;
+    min-height: 950px;
   }
 }
 
-@media (min-width: 992px) {
+@media (min-width: 768px) {
   .story-section:nth-of-type(2) {
     min-height: 700px;
   }
@@ -82,11 +82,11 @@ html .row, body .row {
 
 @media (min-width: 540px) {
   .story-section:nth-of-type(3) {
-    min-height: 900px;
+    min-height: 950px;
   }
 }
 
-@media (min-width: 992px) {
+@media (min-width: 768px) {
   .story-section:nth-of-type(3) {
     min-height: 700px;
   }
@@ -117,11 +117,11 @@ html .row, body .row {
 
 @media (min-width: 540px) {
   .story-section:nth-of-type(4) {
-    min-height: 930px;
+    min-height: 950px;
   }
 }
 
-@media (min-width: 992px) {
+@media (min-width: 768px) {
   .story-section:nth-of-type(4) {
     min-height: 700px;
   }
