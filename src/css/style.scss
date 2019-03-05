@@ -8,14 +8,28 @@ rgb(255,246,141)
 rgb(44,62,80)
 */
 
+$break-mobile-sm: 400px;
+$break-mobile-lg: 481px;
 $break-sm: 576px;
 $break-md: 768px;
 $break-lg: 992px;
 $break-xl: 1200px;
 $break-xxl: 1400px;
 
-@mixin mobile {
-    @media (max-width: #{$break-sm}) {
+@mixin mobile-sm {
+    @media (max-width: #{$break-mobile-sm}) {
+       @content;
+   }
+}
+
+@mixin mobile-lg {
+    @media (min-width: #{$break-mobile-sm}) {
+       @content;
+   }
+}
+
+@mixin ssm {
+    @media (min-width: #{$break-mobile-lg}) {
        @content;
    }
 }
@@ -73,19 +87,29 @@ html, body {
     &:nth-of-type(1) {
         background: rgb(255,246,141);
         color: rgb(44,62,80);
-        @include mobile {
+        @include mobile-sm {
             padding-top: 15vh;
-            min-height: 800px;
+            height: 800px;
         }
-        @include sm {
+        @include mobile-lg {
+            padding-top: 15vh;
+            height: 900px;
+        }
+        @include ssm {
             align-items: center;
         }
     }
 
     &:nth-of-type(2) {
         background: rgb(42,184,172);
-        @include mobile {
-            min-height: 800px;
+        @include mobile-sm {
+            height: 800px;
+        }
+        @include mobile-lg {
+            height: 900px;
+        }
+        @include ssm {
+            min-height: 620px;
         }
         @include sm {
             min-height: 500px;
@@ -106,8 +130,14 @@ html, body {
 
     &:nth-of-type(3) {
         background: rgb(255,196,133);
-        @include mobile {
-            min-height: 800px;
+        @include mobile-sm {
+            height: 800px;
+        }
+        @include mobile-lg {
+            height: 900px;
+        }
+        @include ssm {
+            min-height: 620px;
         }
         @include sm {
             min-height: 500px;
@@ -140,8 +170,14 @@ html, body {
                 color: hotpink;
             }
         }
-        @include mobile {
-            min-height: 800px;
+        @include mobile-sm {
+            height: 800px;
+        }
+        @include mobile-lg {
+            height: 900px;
+        }
+        @include ssm {
+            min-height: 620px;
         }
         @include sm {
             min-height: 500px;
