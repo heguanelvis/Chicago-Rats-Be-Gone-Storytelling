@@ -2,9 +2,10 @@ import "bootstrap-css-only";
 import "../css/style.css";
 
 import ratfavi from "../img/ratfavi.png";
+import slideBg1 from "../img/slideBg1.jpg";
 
-import ScrollMagic from 'scrollmagic';
-import 'imports-loader?define=>false!scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap';
+import ScrollMagic from "scrollmagic";
+import "imports-loader?define=>false!scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap";
 
 import * as d3 from "d3";
 import MapChart from "./charts/usMap";
@@ -12,8 +13,11 @@ import StepChart from "./charts/step";
 import DonutChart from "./charts/donut";
 
 /* Images */
-let favicon = document.getElementById('favicon');
+let favicon = document.getElementById("favicon");
 favicon.href = ratfavi;
+
+let intro = document.querySelector(".intro");
+intro.style.backgroundImage = `url(${slideBg1})`;
 
 /* Data */
 const files = ["data/chicago_5_year_complaints_by_date.json", "data/chicago_premise_indicators.json", "data/us_states.json", "data/us_rats_by_state.json"];
@@ -131,4 +135,9 @@ function responsivefy(svg) {
     function isMobileDevice() {
         return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
     };
+}
+
+/* Start Animation */
+{
+    TweenMax.fromTo(".intro", 3, { scale: 1.25 }, { scale: 1, ease: Linear.easeNone });
 }
