@@ -145,7 +145,7 @@ export default class StepChart {
         this.graph.append("text")
             .text("Complaint Count")
             .attr("text-anchor", "middle")
-            .attr("transform", `translate(${this.margin.left / 3}, ${this.height / 1.9})rotate(-90)`)
+            .attr("transform", `translate(${this.margin.left / 4}, ${this.height / 1.9})rotate(-90)`)
             .attr("font-size", "14")
             .attr("fill", "white");
     };

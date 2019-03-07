@@ -28,7 +28,11 @@ yellowgreen
 
 rgb(95, 44, 131)
 purple
+
+font-family: 'Acme', sans-serif;
 */
+
+@import url('https://fonts.googleapis.com/css?family=Laila');
 
 $break-mobile-sm: 400px;
 $break-mobile-lg: 481px;
@@ -40,6 +44,9 @@ $break-xxl: 1400px;
 
 $slide-bg-color: rgba(18, 18, 26, 0.8);
 $source-hover-color: rgb(252, 238, 33);
+
+$laila: 'Laila', serif;
+
 @mixin mobile-sm {
     @media (max-width: #{$break-mobile-sm}) {
        @content;
@@ -91,6 +98,7 @@ $source-hover-color: rgb(252, 238, 33);
 html, body {
     height: 100%;
     width: 100%;
+    font-family: $laila;
 
     .row {
         margin: 0;
@@ -168,6 +176,10 @@ html, body {
 
     &:nth-of-type(3) {
         background: $slide-bg-color;
+        .ticks {
+            font-family: $laila;
+            font-size: 0.75rem;
+        }
         @include mobile-sm {
             height: 800px;
         }
