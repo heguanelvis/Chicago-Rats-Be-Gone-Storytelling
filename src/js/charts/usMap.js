@@ -89,7 +89,7 @@ export default class MapChart {
 
     graphInfo() {
         this.graph.append("text")
-            .text("Chicago Has the Most Rat Complaints per 10,000 Population All Year Round")
+            .text("Chicago Has the Most Rat Complaints per 100,000 Population All Year Round")
             .attr("text-anchor", "middle")
             .attr("transform", `translate(${this.width / 2}, ${this.margin.top / 3})`)
             .attr("font-size", "20")
