@@ -96,16 +96,16 @@ export default class MapChart {
             .attr("fill", "white");
 
         this.graph.append("text")
-            .text("Rat complaints per 10,000 population by highly affected US cities in 2018")
+            .text("Rat complaints per 100,000 population by highly affected US cities in 2018")
             .attr("text-anchor", "middle")
             .attr("transform", `translate(${this.width / 2}, ${this.margin.top / 1.5})`)
             .attr("font-size", "16")
             .attr("fill", "white");
 
         this.graph.append("text")
-            .html(() => "Source: <a class='chart-source' href='https://data.cityofchicago.org/Service-Requests/311-Service-Requests-Rodent-Baiting-No-Duplicates/uqhs-j723'>Chicago Data Portal</a>")
+            .html(() => "Source: <a class='chart-source' href='http://us-city.census.okfn.org/dataset/service-requests'>City Data Portals</a>")
             .attr("text-anchor", "middle")
-            .attr("transform", `translate(${this.width / 1.19}, ${this.height - this.margin.bottom / 5})`)
+            .attr("transform", `translate(${this.width / 1.3}, ${this.height - this.margin.bottom / 4})`)
             .attr("font-size", "14")
             .attr("fill", "white");
     };
