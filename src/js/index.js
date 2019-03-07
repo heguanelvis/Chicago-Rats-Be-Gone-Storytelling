@@ -139,5 +139,5 @@ function responsivefy(svg) {
 
 /* Start Animation */
 {
-    TweenMax.fromTo(".intro", 3, { scale: 1.25 }, { scale: 1, ease: Linear.easeNone });
+    TweenMax.fromTo(".intro", 8, { scale: 2.3 }, { scale: 1, ease: Power2.easeOut });
 }

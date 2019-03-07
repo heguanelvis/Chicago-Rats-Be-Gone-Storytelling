@@ -78,7 +78,7 @@ html .row, body .row {
 }
 
 .story-section:nth-of-type(2) {
-  background: #2ab8ac;
+  background: rgba(0, 0, 0, 0.8);
 }
 
 @media (max-width: 400px) {
@@ -131,7 +131,7 @@ html .row, body .row {
 }
 
 .story-section:nth-of-type(3) {
-  background: #ffc485;
+  background: rgba(0, 0, 0, 0.8);
 }
 
 @media (max-width: 400px) {
@@ -184,7 +184,7 @@ html .row, body .row {
 }
 
 .story-section:nth-of-type(4) {
-  background: #9c55a5;
+  background: rgba(0, 0, 0, 0.8);
 }
 
 .story-section:nth-of-type(4) .donut-tip {

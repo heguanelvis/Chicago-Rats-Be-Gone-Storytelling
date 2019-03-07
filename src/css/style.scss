@@ -114,7 +114,7 @@ html, body {
     }
 
     &:nth-of-type(2) {
-        background: rgb(42,184,172);
+        background: rgba(0, 0, 0, 0.8);
         @include mobile-sm {
             height: 800px;
         }
@@ -143,7 +143,7 @@ html, body {
     }
 
     &:nth-of-type(3) {
-        background: rgb(255,196,133);
+        background: rgba(0, 0, 0, 0.8);
         @include mobile-sm {
             height: 800px;
         }
@@ -172,7 +172,7 @@ html, body {
     }
 
     &:nth-of-type(4) {
-        background: rgb(156,85,165);
+        background: rgba(0, 0, 0, 0.8);
         .donut-tip {
             display: inline-block;
             text-align: center;
