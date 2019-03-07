@@ -83,12 +83,14 @@ export default class StepChart {
             .attr("r", 0)
             .attr("cx", d => this.x(new Date(d.date)))
             .attr("cy", d => this.y(d.count))
-            .attr("class", "cursor-pointer");
+            .attr("class", "cursor-pointer")
+            .attr("stroke", "#fff")
+            .attr("stroke-width", 1);
 
         circles.transition()
             .duration(1500)
             .attr("r", 4)
-            .attr("fill", "white");
+            .attr("fill", "rgb(252, 238, 33)");
 
         circles.on("mouseover", this.handleMouseOver.bind(this))
             .on("mouseout", this.handleMouseOut);
@@ -112,8 +114,7 @@ export default class StepChart {
 
         d3.select(n[i])
             .attr("r", 7)
-            .attr("stroke", "gray")
-            .attr("stroke-width", 2);
+            .attr("fill", "rgb(229, 75, 39)")
 
         this.graph.append("text")
             .attr("id", `t-${d.date}-${d.count}-${i}`)
@@ -121,14 +122,13 @@ export default class StepChart {
             .attr("y", this.y(d.count) - 15)
             .text(`${months[(new Date(d.date)).getMonth()]}: ${d.count}`)
             .attr("font-size", "14")
-            .attr("fill", "gray");
+            .attr("fill", "white");
     };
 
     handleMouseOut(d, i, n) {
         d3.select(this)
             .attr("r", 4)
-            .attr("stroke", "white")
-            .attr("stroke-width", 0);
+            .attr("fill", "rgb(252, 238, 33)")
 
         d3.select(`#t-${d.date}-${d.count}-${i}`)
             .remove();

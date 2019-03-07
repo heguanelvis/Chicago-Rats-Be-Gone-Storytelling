@@ -1,11 +1,33 @@
 /*
-rgb(42,184,172)
-rgb(255,196,133)
-rgb(156,85,165)
-rgb(204,224,51)
-rgb(87,202,221)
-rgb(255,246,141)
-rgb(44,62,80)
+rgba(18, 18, 26, 0.8) 
+blackbg
+
+rgb(252, 238, 33) 
+lightyellow
+
+rgb(203, 32, 45) 
+darkred
+
+rgb(247, 171, 27) 
+orange
+
+rgb(236, 112, 37)
+darkorange
+
+rgb(229, 75, 39) 
+darkerorange
+
+rgb(53, 168, 73) 
+darkgreen
+
+rgb(8, 91, 167) 
+darkblue
+
+rgb(211, 220, 43) 
+yellowgreen
+
+rgb(95, 44, 131)
+purple
 */
 html, body {
   height: 100%;
@@ -78,7 +100,7 @@ html .row, body .row {
 }
 
 .story-section:nth-of-type(2) {
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(18, 18, 26, 0.8);
 }
 
 @media (max-width: 400px) {
@@ -131,7 +153,7 @@ html .row, body .row {
 }
 
 .story-section:nth-of-type(3) {
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(18, 18, 26, 0.8);
 }
 
 @media (max-width: 400px) {
@@ -184,7 +206,7 @@ html .row, body .row {
 }
 
 .story-section:nth-of-type(4) {
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(18, 18, 26, 0.8);
 }
 
 .story-section:nth-of-type(4) .donut-tip {
@@ -255,7 +277,7 @@ html .row, body .row {
 }
 
 .story-section .chart-source:hover {
-  fill: gray;
+  fill: #fcee21;
 }
 
 .cursor-pointer {

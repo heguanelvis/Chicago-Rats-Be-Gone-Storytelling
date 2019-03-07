@@ -48,7 +48,7 @@ export default class MapChart {
         circles.transition()
             .duration(4000)
             .attr("r", d => Math.sqrt(d.rats_capita) * 0.7)
-            .attr("fill", "red")
+            .attr("fill", "rgb(252, 238, 33)")
             .attr("stroke", "#fff")
             .attr("stroke-width", 1)
             .attr("class", "cursor-pointer")
@@ -62,9 +62,8 @@ export default class MapChart {
         console.log(d.longitude);
         d3.select(n[i])
             .attr("r", d => Math.sqrt(d.rats_capita) * 0.8)
-            .attr("fill", "orange");
+            .attr("fill", "rgb(229, 75, 39)");
         
-
         this.graph.append("text")
             .attr("id", `t-${d.pop}-${d.rats_capita}-${i}`)
             .attr("x", this.projection([d.longitude, d.latitude])[0] + 15)
@@ -77,9 +76,7 @@ export default class MapChart {
     handleMouseOut(d, i, n) {
         d3.select(this)
             .attr("r", Math.sqrt(d.rats_capita) * 0.7)
-            .attr("fill", "red")
-            .attr("stroke", "#fff")
-            .attr("stroke-width", 1)
+            .attr("fill", "rgb(252, 238, 33)")
             .style("opacity", "0.8");
 
         d3.select(`#t-${d.pop}-${d.rats_capita}-${i}`)

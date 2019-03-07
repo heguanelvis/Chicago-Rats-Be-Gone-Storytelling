@@ -15,6 +15,16 @@ export default class donutChart {
             y: this.graphHeight / 2 + 1.7 * this.margin.top
         }
         this.radius = radius;
+        this.colorScheme = [
+            "rgb(229, 75, 39)",     // darkerorange
+            "rgb(203, 32, 45)",     // darkred
+            "rgb(95, 44, 131)",     // purple
+            "rgb(8, 91, 167)",      // darkblue
+            "rgb(53, 168, 73)",     // green
+            "rgb(252, 238, 33)",    // yellow
+            "rgb(247, 171, 27)",    // orange
+            "rgb(236, 112, 37)"    // darkorange
+        ]
     };
 
     graphSetup() {
@@ -32,10 +42,14 @@ export default class donutChart {
         this.arcPath = d3.arc()
             .outerRadius(this.radius)
             .innerRadius(this.radius / 2);
+        
+        this.hoverArcPath = d3.arc()
+            .outerRadius(this.radius)
+            .innerRadius(this.radius / 2.2);
     };
 
     graphScales() {
-        this.color = d3.scaleOrdinal(d3["schemeSet3"]);
+        this.color = d3.scaleOrdinal(this.colorScheme);
     };
 
     graphLegend() {
@@ -50,10 +64,10 @@ export default class donutChart {
 
     handleMouseOver(d, i, n) {
         d3.select(n[i])
-            .transition("changeSliceFill").duration(300)
-            .attr("fill", "#fff");
+            .transition("hoverArcPath").duration(300)
+            .attr("d", this.hoverArcPath);
 
-        const centroid = this.arcPath.centroid(d);
+        const centroid = this.hoverArcPath.centroid(d);
 
         this.graph.append("foreignObject")
             .attr("width", 190)
@@ -70,8 +84,8 @@ export default class donutChart {
 
     handleMouseOut(d, i, n) {
         d3.select(n[i])
-            .transition("changeSliceFill").duration(300)
-            .attr("fill", this.color(d.data.Indicators));
+            .transition("hoverArcPath").duration(300)
+            .attr("d", this.arcPath);
 
         d3.select(`#t-${d.Indicators}-${d.Count}-${i}`)
             .remove();
@@ -121,7 +135,7 @@ export default class donutChart {
             .append("path")
             .attr("d", this.arcPath)
             .attr("stroke", "#fff")
-            .attr("stroke-width", 3)
+            .attr("stroke-width", 1)
             .attr("class", "cursor-pointer")
             .attr("fill", d => this.color(d.data.Indicators))
             .transition().duration(1250)
