@@ -189,7 +189,7 @@
         "longitude": -80.8431267
     },
     {
-        "city": "Oklahoma ",
+        "city": "Oklahoma City",
         "state": "Oklahoma",
         "pop": "599199",
         "rat": "1120",
@@ -414,13 +414,13 @@
         "longitude": -84.3879824
     },
     {
-        "city": "Norfolk",
+        "city": "Richmond",
         "state": "Virginia",
-        "pop": "245782",
+        "pop": "214114",
         "rat": "233",
-        "rats_capita": 95,
-        "latitude": 36.8507689,
-        "longitude": -76.28587259999999
+        "rats_capita": 109,
+        "latitude": 37.5407246,
+        "longitude": -77.4360481
     },
     {
         "city": "Baton Rouge",
@@ -466,15 +466,6 @@
         "rats_capita": 90,
         "latitude": 36.0726354,
         "longitude": -79.7919754
-    },
-    {
-        "city": "Newark",
-        "state": "New Jersey",
-        "pop": "277727",
-        "rat": "228",
-        "rats_capita": 82,
-        "latitude": 40.735657, 
-        "longitude": -74.1723667
     },
     {
         "city": "Jersey ",
@@ -531,11 +522,11 @@
         "longitude": -112.0740373
     },
     {
-        "city": "Kansas ",
+        "city": "Kansas City",
         "state": "Missouri",
         "pop": "464310",
-        "rat": "276",
-        "rats_capita": 59,
+        "rat": "639",
+        "rats_capita": 138,
         "latitude": 39.0997265,
         "longitude": -94.5785667
     },
@@ -572,7 +563,7 @@
         "pop": "836507",
         "rat": "368",
         "rats_capita": 44,
-        "latitude": 30.3321838, 
+        "latitude": 30.3321838,
         "longitude": -81.65565099999999
     },
     {
@@ -671,16 +662,61 @@
         "pop": "109642",
         "rat": "59",
         "rats_capita": 54,
-        "latitude": 45.7832856, 
+        "latitude": 45.7832856,
         "longitude": -108.5006904
     },
     {
-        "city": "Portland", 
+        "city": "Portland",
         "state": "Oregon",
-        "pop": "609456", 
+        "pop": "609456",
         "rat": "698",
         "rats_capita": 115,
-        "latitude": 45.5230622, 
+        "latitude": 45.5230622,
         "longitude": -122.6764816
+    },
+    {
+        "city": "Cheyenne",
+        "state": "Wyoming",
+        "pop": "62448",
+        "rat": "54",
+        "rats_capita": 86,
+        "latitude": 41.1399814,
+        "longitude": -104.8202462
+    },
+    {
+        "city": "Fargo",
+        "state": "North Dakota",
+        "pop": "113658",
+        "rat": "97",
+        "rats_capita": 85,
+        "latitude": 46.8771863,
+        "longitude": -96.7898034
+    },
+    {
+        "city": "Bismarck",
+        "state": "North Dakota",
+        "pop": "67034",
+        "rat": "36",
+        "rats_capita": 54,
+        "latitude": 46.8083268,
+        "longitude": -100.7837392
+    },
+    {
+        "city": "Sioux Falls", 
+        "state": "South Dakota",
+        "pop": "164676", 
+        "rat": "274",
+        "rats_capita": 166,
+        "latitude": 43.5445959, 
+        "longitude": -96.73110340000001
+    },
+    {
+        "city": "Salt Lake City", 
+        "state": "Utah",
+        "pop": "191180", 
+        "rat": "263",
+        "rats_capita": 138,
+        "latitude": 40.7607793, 
+        "longitude": -111.8910474
     }
 ]
