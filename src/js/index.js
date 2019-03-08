@@ -78,7 +78,7 @@ Promise.all(files.map(path => d3.json(path)))
 function animateChart(selector, chart) {
     document.querySelector(selector).addEventListener("mouseover", () => {
         chart.grapher();
-        TweenMax.fromTo(`${selector} svg`, 1, { scale: 0.5 }, { scale: 1, ease: Linear.easeNone });
+        TweenMax.fromTo(`${selector} svg`, 0.5, { scale: 0.1 }, { scale: 1, ease: Linear.easeNone });
     }, { once: true });
 };
 

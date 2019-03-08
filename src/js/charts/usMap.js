@@ -46,7 +46,7 @@ export default class MapChart {
             .attr("cy", d => this.projection([d.longitude, d.latitude])[1]);
             
         circles.transition()
-            .duration(4000)
+            .duration(1500)
             .attr("r", d => Math.sqrt(d.rats_capita) * 0.7)
             .attr("fill", d => d.city === "Chicago" ? "rgb(247, 171, 27)" : "rgb(252, 238, 33)")
             .attr("stroke", "white")

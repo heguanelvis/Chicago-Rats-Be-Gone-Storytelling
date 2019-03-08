@@ -66,7 +66,7 @@ export default class donutChart {
         d3.select(n[i])
             .transition("hoverArcPath").duration(300)
             .attr("d", this.hoverArcPath)
-            .attr("stroke-width", 2);
+            .attr("stroke-width", 3);
 
         const centroid = this.hoverArcPath.centroid(d);
 
@@ -140,7 +140,7 @@ export default class donutChart {
             .attr("stroke-width", 1)
             .attr("class", "cursor-pointer")
             .attr("fill", d => this.color(d.data.Indicators))
-            .transition().duration(1250)
+            .transition().duration(750)
             .attrTween("d", d => this.arcTweenEnter(d, this.arcPath));
 
         this.graph.selectAll("path")
