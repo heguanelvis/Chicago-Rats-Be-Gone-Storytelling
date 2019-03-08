@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*
 rgba(18, 18, 26, 0.8) 
 blackbg
@@ -75,10 +76,17 @@ html .row, body .row {
   background-size: cover;
 }
 
-.story-section:nth-of-type(1) .story-return-btn {
+.story-section:nth-of-type(1) .intro-info {
   position: absolute;
   top: 7%;
   left: 5%;
+}
+
+.story-section:nth-of-type(1) .intro-info a {
+  text-decoration: none;
+}
+
+.story-section:nth-of-type(1) .intro-info a .story-return-btn {
   padding: 0.7rem;
   font-size: 1rem;
   font-weight: bold;
@@ -86,13 +94,34 @@ html .row, body .row {
   border: 2px double white;
   background: #12121a;
   color: white;
+  display: block;
 }
 
-.story-section:nth-of-type(1) .story-return-btn:hover, .story-section:nth-of-type(1) .story-return-btn:active, .story-section:nth-of-type(1) .story-return-btn:focus {
+.story-section:nth-of-type(1) .intro-info a .story-return-btn:hover, .story-section:nth-of-type(1) .intro-info a .story-return-btn:active, .story-section:nth-of-type(1) .intro-info a .story-return-btn:focus {
   background: white;
   color: #12121a;
   border: 2px double #12121a;
-  outline: none !important;
+  outline: none;
+}
+
+.story-section:nth-of-type(1) .intro-info .repo-link {
+  font-size: 3rem;
+  color: white;
+  display: block;
+}
+
+.story-section:nth-of-type(1) .intro-info .repo-link:hover, .story-section:nth-of-type(1) .intro-info .repo-link:active, .story-section:nth-of-type(1) .intro-info .repo-link:focus {
+  color: #fcee21;
+  outline: none；;
+}
+
+.story-section:nth-of-type(1) .intro-info .instruction-text {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.story-section:nth-of-type(1) .intro-info .instruction-text p {
+  margin: 0;
 }
 
 @media (max-width: 400px) {
@@ -302,7 +331,51 @@ html .row, body .row {
   font-size: 0.75rem;
 }
 
+.story-section .arrow-instruction {
+  font-size: 2rem;
+  position: absolute;
+  width: 100%;
+  color: white;
+  bottom: 2%;
+  opacity: 0.2;
+}
+
 .cursor-pointer {
   cursor: pointer;
+}
+
+.bounce {
+  -webkit-animation: bounce 1.5s infinite;
+  animation: bounce 1.5s infinite;
+}
+
+@-webkit-keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  40% {
+    -webkit-transform: translateY(-30px);
+    transform: translateY(-30px);
+  }
+  60% {
+    -webkit-transform: translateY(-15px);
+    transform: translateY(-15px);
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  40% {
+    -webkit-transform: translateY(-30px);
+    transform: translateY(-30px);
+  }
+  60% {
+    -webkit-transform: translateY(-15px);
+    transform: translateY(-15px);
+  }
 }
 /*# sourceMappingURL=style.css.map */
