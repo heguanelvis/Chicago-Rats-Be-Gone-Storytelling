@@ -108,7 +108,8 @@ html, body {
 }
 
 #pinContainer {
-    width: 100%;
+    width: 100% !important;
+
     @include mobile-sm {
         height: 800px;
     }
@@ -128,8 +129,24 @@ html, body {
     &:nth-of-type(1) {
         color: white;
         background-size: cover;
-        h3 {
-            font-size: 2.5rem;
+        .story-return-btn {
+            position: absolute;
+            top: 7%;
+            left: 5%;
+            padding: 0.7rem;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 5%;
+            border: 2px double white;
+            background: rgb(18, 18, 26);
+            color: white;
+
+            &:hover, &:active, &:focus {
+                background: white;
+                color: rgb(18, 18, 26);
+                border: 2px double rgb(18, 18, 26);
+                outline: none !important;
+            }
         }
 
         @include mobile-sm {
@@ -261,4 +278,3 @@ html, body {
 .cursor-pointer {
     cursor: pointer;
 }
-

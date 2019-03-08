@@ -43,7 +43,7 @@ html .row, body .row {
 }
 
 #pinContainer {
-  width: 100%;
+  width: 100% !important;
 }
 
 @media (max-width: 400px) {
@@ -75,8 +75,24 @@ html .row, body .row {
   background-size: cover;
 }
 
-.story-section:nth-of-type(1) h3 {
-  font-size: 2.5rem;
+.story-section:nth-of-type(1) .story-return-btn {
+  position: absolute;
+  top: 7%;
+  left: 5%;
+  padding: 0.7rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 5%;
+  border: 2px double white;
+  background: #12121a;
+  color: white;
+}
+
+.story-section:nth-of-type(1) .story-return-btn:hover, .story-section:nth-of-type(1) .story-return-btn:active, .story-section:nth-of-type(1) .story-return-btn:focus {
+  background: white;
+  color: #12121a;
+  border: 2px double #12121a;
+  outline: none !important;
 }
 
 @media (max-width: 400px) {

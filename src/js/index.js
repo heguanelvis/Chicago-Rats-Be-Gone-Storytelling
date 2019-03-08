@@ -39,7 +39,7 @@ Promise.all(files.map(path => d3.json(path)))
         let mapCanvas = d3.select("#chart1")
             .append("svg")
             .attr("width", mapWidth)
-            .attr("height", mapHeight);
+            .attr("height", mapHeight)
         const mapChart = new MapChart(usStates, usRats, mapCanvas, mapWidth, mapHeight, mapMargin, mapScale);
         animateChart(".us-map", mapChart);
         responsivefy(mapChart.canvas);
@@ -51,7 +51,7 @@ Promise.all(files.map(path => d3.json(path)))
         let stepCanvas = d3.select("#chart2")
             .append("svg")
             .attr("width", stepWidth)
-            .attr("height", stepHeight);
+            .attr("height", stepHeight)
         const stepChart = new StepChart(complaintsFiveYear, stepCanvas, stepWidth, stepHeight, stepMargin);
         animateChart(".step", stepChart);
         responsivefy(stepChart.canvas);
@@ -64,7 +64,7 @@ Promise.all(files.map(path => d3.json(path)))
         let donutCanvas = d3.select("#chart3")
             .append("svg")
             .attr("width", donutWidth)
-            .attr("height", donutHeight);
+            .attr("height", donutHeight)
         const donutChart = new DonutChart(premiseIndicators, donutCanvas, donutWidth, donutHeight, donutMargin, donutRadius);
         animateChart(".donut", donutChart);
         responsivefy(donutChart.canvas);
