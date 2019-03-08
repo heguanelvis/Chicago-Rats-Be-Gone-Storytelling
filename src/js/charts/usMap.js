@@ -65,11 +65,11 @@ export default class MapChart {
             .attr("fill", "rgb(229, 75, 39)");
 
         this.graph.append("foreignObject")
-            .attr("width", 200)
+            .attr("width", 210)
             .attr("height", 50)
             .attr("id", `t-${d.pop}-${d.rats_capita}-${i}`)
             .attr("x", this.projection([d.longitude, d.latitude])[0])
-            .attr("y", this.projection([d.longitude, d.latitude])[1] - 60)
+            .attr("y", this.projection([d.longitude, d.latitude])[1] - 70)
             .html(() => {
                 return `<div class="tip-style">${d.city}: ${d.rats_capita}</div>`;
             });

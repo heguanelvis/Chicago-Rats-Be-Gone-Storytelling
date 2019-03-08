@@ -117,7 +117,7 @@ export default class StepChart {
             .attr("fill", "rgb(229, 75, 39)");
 
         this.graph.append("foreignObject")
-            .attr("width", 150)
+            .attr("width", 160)
             .attr("height", 50)
             .attr("id", `t-${d.date}-${d.count}-${i}`)
             .attr("x", this.x(new Date(d.date)) - 70)
