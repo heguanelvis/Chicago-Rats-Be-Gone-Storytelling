@@ -44,6 +44,8 @@ $break-xxl: 1400px;
 
 $slide-bg-color: rgba(18, 18, 26, 0.8);
 $source-hover-color: rgb(252, 238, 33);
+$tip-color: hotpink;
+$tip-bg-color: rgb(18, 18, 26);
 
 $laila: 'Laila', serif;
 
@@ -176,10 +178,6 @@ html, body {
 
     &:nth-of-type(3) {
         background: $slide-bg-color;
-        .ticks {
-            font-family: $laila;
-            font-size: 0.75rem;
-        }
         @include mobile-sm {
             height: 800px;
         }
@@ -209,18 +207,6 @@ html, body {
 
     &:nth-of-type(4) {
         background: $slide-bg-color;
-        .donut-tip {
-            display: inline-block;
-            text-align: center;
-            border-radius: 30%;
-            padding: 0.5rem;
-            background: #333;
-            color: #fff;
-
-            .donut-indicators {
-                color: hotpink;
-            }
-        }
         @include mobile-sm {
             height: 800px;
         }
@@ -254,6 +240,21 @@ html, body {
         &:hover {
             fill: $source-hover-color;
         }
+    }
+
+    .tip-style {
+        display: inline-block;
+        text-align: center;
+        border-radius: 10%;
+        padding: 0.5rem;
+        background: $tip-bg-color;
+        color: $tip-color;
+        border: white 1px solid;
+    }
+
+    .ticks-style {
+        font-family: $laila;
+        font-size: 0.75rem;
     }
 }
 

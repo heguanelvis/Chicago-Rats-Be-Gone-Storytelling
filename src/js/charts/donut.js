@@ -65,7 +65,8 @@ export default class donutChart {
     handleMouseOver(d, i, n) {
         d3.select(n[i])
             .transition("hoverArcPath").duration(300)
-            .attr("d", this.hoverArcPath);
+            .attr("d", this.hoverArcPath)
+            .attr("stroke-width", 2);
 
         const centroid = this.hoverArcPath.centroid(d);
 
@@ -76,8 +77,8 @@ export default class donutChart {
             .attr("x", centroid[0])
             .attr("y", centroid[1] - 160)
             .html(() => {
-                let content = `<div class="donut-tip"><div class="donut-indicators">${d.data.Indicators}</div>`;
-                content += `<div class="donut-count">${d.data.Count}</div>`;
+                let content = `<div class="tip-style"><div>${d.data.Indicators}</div>`;
+                content += `<div>${d.data.Count}</div></div>`;
                 return content;
             });
     };
@@ -85,7 +86,8 @@ export default class donutChart {
     handleMouseOut(d, i, n) {
         d3.select(n[i])
             .transition("hoverArcPath").duration(300)
-            .attr("d", this.arcPath);
+            .attr("d", this.arcPath)
+            .attr("stroke-width", 1);
 
         d3.select(`#t-${d.Indicators}-${d.Count}-${i}`)
             .remove();
@@ -134,7 +136,7 @@ export default class donutChart {
         paths.enter()
             .append("path")
             .attr("d", this.arcPath)
-            .attr("stroke", "#fff")
+            .attr("stroke", "white")
             .attr("stroke-width", 1)
             .attr("class", "cursor-pointer")
             .attr("fill", d => this.color(d.data.Indicators))

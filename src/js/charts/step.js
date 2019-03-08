@@ -43,9 +43,9 @@ export default class StepChart {
         const yAxis = d3.axisLeft(this.y);
 
         xAxisGroup.call(xAxis)
-            .attr("class", "ticks");  // classes need to be added
+            .attr("class", "ticks-style");
         yAxisGroup.call(yAxis)
-            .attr("class", "ticks");
+            .attr("class", "ticks-style");
     };
 
     graphLine() {
@@ -84,7 +84,7 @@ export default class StepChart {
             .attr("cx", d => this.x(new Date(d.date)))
             .attr("cy", d => this.y(d.count))
             .attr("class", "cursor-pointer")
-            .attr("stroke", "#fff")
+            .attr("stroke", "white")
             .attr("stroke-width", 1);
 
         circles.transition()
@@ -114,21 +114,23 @@ export default class StepChart {
 
         d3.select(n[i])
             .attr("r", 7)
-            .attr("fill", "rgb(229, 75, 39)")
+            .attr("fill", "rgb(229, 75, 39)");
 
-        this.graph.append("text")
+        this.graph.append("foreignObject")
+            .attr("width", 150)
+            .attr("height", 50)
             .attr("id", `t-${d.date}-${d.count}-${i}`)
-            .attr("x", this.x(new Date(d.date)) - 30)
-            .attr("y", this.y(d.count) - 15)
-            .text(`${months[(new Date(d.date)).getMonth()]}: ${d.count}`)
-            .attr("font-size", "14")
-            .attr("fill", "white");
+            .attr("x", this.x(new Date(d.date)) - 70)
+            .attr("y", this.y(d.count) - 60)
+            .html(() => {
+                return `<div class="tip-style">${months[(new Date(d.date)).getMonth()]}: ${d.count}</div>`;
+            });
     };
 
     handleMouseOut(d, i, n) {
         d3.select(this)
             .attr("r", 4)
-            .attr("fill", "rgb(252, 238, 33)")
+            .attr("fill", "rgb(252, 238, 33)");
 
         d3.select(`#t-${d.date}-${d.count}-${i}`)
             .remove();

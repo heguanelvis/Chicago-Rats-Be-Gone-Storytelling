@@ -32,7 +32,7 @@ export default class MapChart {
             .enter()
             .append("path")
             .attr("d", this.geoGenerator)
-            .style("stroke", "#fff")
+            .style("stroke", "white")
             .style("stroke-width", 2)
             .attr("fill", "rgba(0, 0, 0, 0)");
     };
@@ -49,7 +49,7 @@ export default class MapChart {
             .duration(4000)
             .attr("r", d => Math.sqrt(d.rats_capita) * 0.7)
             .attr("fill", "rgb(252, 238, 33)")
-            .attr("stroke", "#fff")
+            .attr("stroke", "white")
             .attr("stroke-width", 1)
             .attr("class", "cursor-pointer")
             .style("opacity", "0.8");
@@ -63,14 +63,16 @@ export default class MapChart {
         d3.select(n[i])
             .attr("r", d => Math.sqrt(d.rats_capita) * 0.8)
             .attr("fill", "rgb(229, 75, 39)");
-        
-        this.graph.append("text")
+
+        this.graph.append("foreignObject")
+            .attr("width", 200)
+            .attr("height", 50)
             .attr("id", `t-${d.pop}-${d.rats_capita}-${i}`)
-            .attr("x", this.projection([d.longitude, d.latitude])[0] + 15)
-            .attr("y", this.projection([d.longitude, d.latitude])[1] - 15)
-            .text(`${d.city}: ${d.rats_capita}`)
-            .attr("font-size", "14")
-            .attr("fill", "white");
+            .attr("x", this.projection([d.longitude, d.latitude])[0])
+            .attr("y", this.projection([d.longitude, d.latitude])[1] - 60)
+            .html(() => {
+                return `<div class="tip-style">${d.city}: ${d.rats_capita}</div>`;
+            });
     };
 
     handleMouseOut(d, i, n) {
@@ -83,7 +85,6 @@ export default class MapChart {
             .remove();
     };
     
-
     graphInfo() {
         this.graph.append("text")
             .text("Chicago Has the Most Rat Complaints per 100,000 Population All Year Round")
