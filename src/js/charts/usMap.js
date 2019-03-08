@@ -48,7 +48,7 @@ export default class MapChart {
         circles.transition()
             .duration(4000)
             .attr("r", d => Math.sqrt(d.rats_capita) * 0.7)
-            .attr("fill", "rgb(252, 238, 33)")
+            .attr("fill", d => d.city === "Chicago" ? "rgb(247, 171, 27)" : "rgb(252, 238, 33)")
             .attr("stroke", "white")
             .attr("stroke-width", 1)
             .attr("class", "cursor-pointer")
@@ -78,7 +78,7 @@ export default class MapChart {
     handleMouseOut(d, i, n) {
         d3.select(this)
             .attr("r", Math.sqrt(d.rats_capita) * 0.7)
-            .attr("fill", "rgb(252, 238, 33)")
+            .attr("fill", d => d.city === "Chicago" ? "rgb(247, 171, 27)" : "rgb(252, 238, 33)")
             .style("opacity", "0.8");
 
         d3.select(`#t-${d.pop}-${d.rats_capita}-${i}`)
@@ -87,7 +87,7 @@ export default class MapChart {
     
     graphInfo() {
         this.graph.append("text")
-            .text("Chicago Has the Most Rat Complaints per 100,000 Population All Year Round")
+            .html("<a class='em-title'>Chicago</a> Has the Most Rat Complaints per 100,000 Population All Year Round")
             .attr("text-anchor", "middle")
             .attr("transform", `translate(${this.width / 2}, ${this.margin.top / 3})`)
             .attr("font-size", "20")
