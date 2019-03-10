@@ -67,12 +67,12 @@ export default class StepChart {
             .attr("stroke-dashoffset", l);
 
         this.timePath.transition()
-            .duration(2000)
+            .duration(2500)
             .attr("stroke-dashoffset", 0);
 
         setTimeout(() => {
             this.graphCircles()
-        }, 2000);
+        }, 2500);
     };
 
     graphCircles() {
@@ -88,7 +88,7 @@ export default class StepChart {
             .attr("stroke-width", 1);
 
         circles.transition()
-            .duration(1000)
+            .duration(500)
             .attr("r", 4)
             .attr("fill", "rgb(252, 238, 33)");
 
