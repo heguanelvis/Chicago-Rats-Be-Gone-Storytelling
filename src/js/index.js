@@ -108,22 +108,20 @@ function responsivefy(svg) {
 {
     let sliderController = new ScrollMagic.Controller();
     let wipeAnimation = new TimelineMax()
-        .to("#pinContainer", 1, { z: -100 })
-        .fromTo(".story-section.us-map", 1, { x: "-100%" }, { x: "0%", ease: Linear.easeNone })
+        .fromTo(".story-section.us-map", 0.2, { x: "-100%" }, { x: "0%", ease: Linear.easeNone })
         .to("#pinContainer", 1, { z: 0 })
-        .fromTo(".story-section.us-map", 1, { y: "0%" }, { y: "-100%", ease: Linear.easeNone })
+        .fromTo(".story-section.us-map", 0.2, { y: "0%" }, { y: "-100%", ease: Linear.easeNone })
         .to("#pinContainer", 1, { z: -100 })
-        .fromTo(".story-section.step", 1, { x: "100%" }, { x: "0%", ease: Linear.easeNone })
+        .fromTo(".story-section.step", 0.2, { x: "100%" }, { x: "0%", ease: Linear.easeNone })
         .to("#pinContainer", 1, { z: 0 })
-        .fromTo(".story-section.step", 1, { y: "0" }, { y: "-100%", ease: Linear.easeNone })
+        .fromTo(".story-section.step", 0.2, { y: "0" }, { y: "-100%", ease: Linear.easeNone })
         .to("#pinContainer", 1, { z: -100 })
-        .fromTo(".story-section.donut", 1, { y: "-100%" }, { y: "0%", ease: Linear.easeNone })
-        .to("#pinContainer", 1, { z: 0 });
+        .fromTo(".story-section.donut", 0.2, { y: "-100%" }, { y: "0%", ease: Linear.easeNone })
 
     new ScrollMagic.Scene({
         triggerElement: "#pinContainer",
         triggerHook: "onLeave",
-        duration: "2200%"
+        duration: "1300%"
     }).setPin("#pinContainer")
         .setTween(wipeAnimation)
         .addTo(sliderController);
