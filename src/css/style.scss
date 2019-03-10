@@ -196,6 +196,16 @@ html, body {
             height: 100%;
             padding-top: 0;
             align-items: center;
+            min-height: 650px;
+        };
+        @include sm {
+            min-height: 600px;
+        };
+        @include xl {
+            min-height: 580px;
+        };
+        @include xxl {
+            min-height: 710px;
         };
     };
 
@@ -215,16 +225,10 @@ html, body {
         };
         @include ssm {
             height: 100%;
-            min-height: 620px;
+            min-height: 650px;
         };
         @include sm {
-            min-height: 500px;
-        };
-        @include md {
-            min-height: 450px;
-        };
-        @include lg {
-            min-height: 550px;
+            min-height: 600px;
         };
         @include xl {
             min-height: 580px;
@@ -245,16 +249,10 @@ html, body {
         };
         @include ssm {
             height: 100%;
-            min-height: 620px;
+            min-height: 650px;
         };
         @include sm {
-            min-height: 500px;
-        };
-        @include md {
-            min-height: 450px;
-        };
-        @include lg {
-            min-height: 550px;
+            min-height: 600px;
         };
         @include xl {
             min-height: 580px;
@@ -274,16 +272,10 @@ html, body {
         };
         @include ssm {
             height: 100%;
-            min-height: 620px;
+            min-height: 650px;
         };
         @include sm {
-            min-height: 500px;
-        };
-        @include md {
-            min-height: 450px;
-        };
-        @include lg {
-            min-height: 550px;
+            min-height: 600px;
         };
         @include xl {
             min-height: 580px;

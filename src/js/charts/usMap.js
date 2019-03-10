@@ -11,6 +11,7 @@ export default class MapChart {
         this.scale = scale;
         this.graphWidth = this.width - this.margin.left - this.margin.right;
         this.graphHeight = this.height - this.margin.top - this.margin.bottom;
+        this.graphed = false;
     };
 
     graphSetup() {
@@ -114,5 +115,6 @@ export default class MapChart {
         this.graphMap();
         this.graphCircles();
         this.graphInfo();
+        this.graphed = true;
     };
 };

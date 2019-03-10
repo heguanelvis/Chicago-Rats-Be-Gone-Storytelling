@@ -41,7 +41,6 @@ Promise.all(files.map(path => d3.json(path)))
             .attr("width", mapWidth)
             .attr("height", mapHeight)
         const mapChart = new MapChart(usStates, usRats, mapCanvas, mapWidth, mapHeight, mapMargin, mapScale);
-        animateChart(".us-map", mapChart);
         responsivefy(mapChart.canvas);
 
         /* Step Chart */
@@ -53,7 +52,6 @@ Promise.all(files.map(path => d3.json(path)))
             .attr("width", stepWidth)
             .attr("height", stepHeight)
         const stepChart = new StepChart(complaintsFiveYear, stepCanvas, stepWidth, stepHeight, stepMargin);
-        animateChart(".step", stepChart);
         responsivefy(stepChart.canvas);
 
         /* Donut Chart */
@@ -66,21 +64,50 @@ Promise.all(files.map(path => d3.json(path)))
             .attr("width", donutWidth)
             .attr("height", donutHeight)
         const donutChart = new DonutChart(premiseIndicators, donutCanvas, donutWidth, donutHeight, donutMargin, donutRadius);
-        animateChart(".donut", donutChart);
         responsivefy(donutChart.canvas);
+
+        /* Slider Control */
+        let sliderController = new ScrollMagic.Controller();
+        let wipeAnimation = new TimelineMax()
+            .fromTo(".story-section.us-map", 0.4, { x: "-100%" }, { x: "0%", ease: Linear.easeNone })
+            .call(() => {
+                if (mapChart.graphed === false) {
+                    mapChart.grapher();
+                    TweenMax.fromTo(`${".us-map"} svg`, 0.5, { scale: 0.1 }, { scale: 1, ease: Linear.easeNone });
+                };
+            })
+            .to("#pinContainer", 1, { z: 0 })
+            .fromTo(".story-section.us-map", 0.4, { y: "0%" }, { y: "-100%", ease: Linear.easeNone })
+            .to("#pinContainer", 1, { z: -100 })
+            .fromTo(".story-section.step", 0.4, { x: "100%" }, { x: "0%", ease: Linear.easeNone })
+            .call(() => {
+                if (stepChart.graphed === false) {
+                    stepChart.grapher();
+                    TweenMax.fromTo(`${".step"} svg`, 0.5, { scale: 0.1 }, { scale: 1, ease: Linear.easeNone });
+                };
+            })
+            .to("#pinContainer", 1, { z: 0 })
+            .fromTo(".story-section.step", 0.4, { y: "0" }, { y: "-100%", ease: Linear.easeNone })
+            .to("#pinContainer", 1, { z: -100 })
+            .fromTo(".story-section.donut", 0.4, { y: "-100%" }, { y: "0%", ease: Linear.easeNone })
+            .call(() => {
+                if (donutChart.graphed === false) {
+                    donutChart.grapher();
+                    TweenMax.fromTo(`${".donut"} svg`, 0.5, { scale: 0.1 }, { scale: 1, ease: Linear.easeNone }); 
+                };     
+            });
+        new ScrollMagic.Scene({
+            triggerElement: "#pinContainer",
+            triggerHook: "onLeave",
+            duration: "1200%"
+        }).setPin("#pinContainer")
+            .setTween(wipeAnimation)
+            .addTo(sliderController);
     })
     .catch(err => {
         alert("Something went wrong...");
         console.log(err);
     });
-
-/* Animate Chart Control */
-function animateChart(selector, chart) {
-    document.querySelector(selector).addEventListener("mouseover", () => {
-        chart.grapher();
-        TweenMax.fromTo(`${selector} svg`, 0.5, { scale: 0.1 }, { scale: 1, ease: Linear.easeNone });
-    }, { once: true });
-};
 
 /* Responsive Control */
 function responsivefy(svg) {
@@ -100,40 +127,9 @@ function responsivefy(svg) {
         if (targetWidth <= 1000) {
             svg.attr("width", targetWidth - 30);
             svg.attr("height", Math.round(targetWidth / aspect));
-        }
+        };
     };
 };
-
-/* Slider Control */
-{
-    let sliderController = new ScrollMagic.Controller();
-    let wipeAnimation = new TimelineMax()
-        .fromTo(".story-section.us-map", 0.2, { x: "-100%" }, { x: "0%", ease: Linear.easeNone })
-        .to("#pinContainer", 1, { z: 0 })
-        .fromTo(".story-section.us-map", 0.2, { y: "0%" }, { y: "-100%", ease: Linear.easeNone })
-        .to("#pinContainer", 1, { z: -100 })
-        .fromTo(".story-section.step", 0.2, { x: "100%" }, { x: "0%", ease: Linear.easeNone })
-        .to("#pinContainer", 1, { z: 0 })
-        .fromTo(".story-section.step", 0.2, { y: "0" }, { y: "-100%", ease: Linear.easeNone })
-        .to("#pinContainer", 1, { z: -100 })
-        .fromTo(".story-section.donut", 0.2, { y: "-100%" }, { y: "0%", ease: Linear.easeNone })
-
-    new ScrollMagic.Scene({
-        triggerElement: "#pinContainer",
-        triggerHook: "onLeave",
-        duration: "1300%"
-    }).setPin("#pinContainer")
-        .setTween(wipeAnimation)
-        .addTo(sliderController);
-
-    window.addEventListener("resize", () => {
-        if (!isMobileDevice()) location.reload();
-    });
-
-    function isMobileDevice() {
-        return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
-    };
-}
 
 /* Start Animation */
 {

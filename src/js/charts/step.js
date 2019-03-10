@@ -9,6 +9,7 @@ export default class StepChart {
         this.margin = margin;
         this.graphWidth = this.width - this.margin.left - this.margin.right;
         this.graphHeight = this.height - this.margin.top - this.margin.bottom;
+        this.graphed = false;
     };
 
     graphSetup() {
@@ -182,6 +183,7 @@ export default class StepChart {
         this.graphAxesLabel();
         this.graphInfo();
         this.graphLine();
+        this.graphed = true;
     };
 }
 

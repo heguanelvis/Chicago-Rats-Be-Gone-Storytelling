@@ -24,7 +24,8 @@ export default class donutChart {
             "rgb(252, 238, 33)",    // yellow
             "rgb(247, 171, 27)",    // orange
             "rgb(236, 112, 37)"    // darkorange
-        ]
+        ];
+        this.graphed = false;
     };
 
     graphSetup() {
@@ -156,5 +157,6 @@ export default class donutChart {
         this.graphLegend();
         this.graphInfo();
         this.makeDonut();
+        this.graphed = true;
     };
 };
