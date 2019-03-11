@@ -79,6 +79,26 @@ html .row, body .row {
   font-size: 1rem;
 }
 
+.story-section .homepage-icon {
+  position: fixed;
+  top: 1%;
+  left: 1%;
+}
+
+.story-section .homepage-icon a {
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.story-section .homepage-icon a:hover, .story-section .homepage-icon a:active, .story-section .homepage-icon a:focus {
+  color: #f7ab1b;
+}
+
+.story-section .homepage-icon a:hover::after, .story-section .homepage-icon a:active::after, .story-section .homepage-icon a:focus::after {
+  content: " Return To Home Page";
+}
+
 .story-section:nth-of-type(1) {
   color: white;
   background-size: cover;

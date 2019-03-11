@@ -134,6 +134,24 @@ html, body {
         font-size: 1rem;
     };
 
+    .homepage-icon {
+        position: fixed;
+        top: 1%;
+        left: 1%;
+
+        a {
+            color: white;
+            cursor: pointer;
+            text-decoration: none;
+            &:hover, &:active, &:focus {
+                color: rgb(247, 171, 27);
+                &::after {
+                    content: " Return To Home Page";
+                }
+            };
+        };
+    };
+
     &:nth-of-type(1) {
         color: white;
         background-size: cover;
