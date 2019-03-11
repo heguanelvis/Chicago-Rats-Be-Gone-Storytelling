@@ -86,9 +86,8 @@ Promise.all(files.map(path => d3.json(path)))
                 };
             })
             .to("#pinContainer", 1, { z: 0 })
-            .fromTo(".story-section.step", 0.4, { y: "0" }, { y: "-100%", ease: Linear.easeNone })
-            .to("#pinContainer", 0.2, { z: -100 })
-            .fromTo(".story-section.donut", 0.4, { y: "-100%" }, { y: "0%", ease: Linear.easeNone })
+            .fromTo(".story-section.step", 0.4, { y: "0%" }, { y: "-100%", ease: Linear.easeNone })
+            .fromTo(".story-section.donut", 0.4, { y: "100%" }, { y: "0%", ease: Linear.easeNone })
             .call(() => {
                 if (donutChart.graphed === false) {
                     donutChart.grapher();
