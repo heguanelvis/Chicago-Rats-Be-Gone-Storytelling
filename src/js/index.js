@@ -6,6 +6,7 @@ import slideBg1 from "../img/slideBg1.jpg";
 
 import ScrollMagic from "scrollmagic";
 import "imports-loader?define=>false!scrollmagic/scrollmagic/uncompressed/plugins/animation.gsap";
+import swal from "sweetalert";
 
 import * as d3 from "d3";
 import MapChart from "./charts/usMap";
@@ -25,6 +26,14 @@ const files = ["data/chicago_5_year_complaints_by_date.json", "data/chicago_prem
 /* Plot */
 Promise.all(files.map(path => d3.json(path)))
     .then(res => {
+        /* User Instructions */
+        if (isMobileDevice()) {
+            swal({
+                title: "Hi, Mobile User",
+                text: "Swipe Up Or Down To View Slides!"
+            });
+        };
+
         /* Data Naming */
         const complaintsFiveYear = res[0];
         const premiseIndicators = res[1];
@@ -75,6 +84,13 @@ Promise.all(files.map(path => d3.json(path)))
                     mapChart.grapher();
                     TweenMax.fromTo(`${".us-map"} svg`, 0.5, { scale: 0.1 }, { scale: 1, ease: Linear.easeNone });
                 };
+
+                if (isMobileDevice()) {
+                    swal({
+                        title: "Hi, Mobile User",
+                        text: "Tap different cities to view the rat complaints per capita per 100,000 population in 2018."
+                    });
+                };
             })
             .to("#pinContainer", 1, { z: 0 })
             .fromTo(".story-section.us-map", 0.4, { y: "0%" }, { y: "-100%", ease: Linear.easeNone })
@@ -84,6 +100,13 @@ Promise.all(files.map(path => d3.json(path)))
                     stepChart.grapher();
                     TweenMax.fromTo(`${".step"} svg`, 0.5, { scale: 0.1 }, { scale: 1, ease: Linear.easeNone });
                 };
+
+                if (isMobileDevice()) {
+                    swal({
+                        title: "Hi, Mobile User",
+                        text: "Tap different circles to view different monthly counts of rat complaints in Chicago."
+                    });
+                };
             })
             .to("#pinContainer", 1, { z: 0 })
             .fromTo(".story-section.step", 0.4, { y: "0%" }, { y: "-100%", ease: Linear.easeNone })
@@ -92,7 +115,14 @@ Promise.all(files.map(path => d3.json(path)))
                 if (donutChart.graphed === false) {
                     donutChart.grapher();
                     TweenMax.fromTo(`${".donut"} svg`, 0.5, { scale: 0.1 }, { scale: 1, ease: Linear.easeNone }); 
-                };     
+                };
+                
+                if (isMobileDevice()) {
+                    swal({
+                        title: "Hi, Mobile User",
+                        text: "Tap each slice of the pie to see the number of rat complaints filed from a certain type of surrounding environment in Chicago from 2014 to 2018."
+                    });
+                };
             });
         new ScrollMagic.Scene({
             triggerElement: "#pinContainer",
@@ -132,4 +162,9 @@ function responsivefy(svg) {
 /* Start Animation */
 {
     TweenMax.fromTo(".intro", 8, { scale: 2.3 }, { scale: 1, ease: Power2.easeOut });
+};
+
+/* Mobile Device */
+function isMobileDevice() {
+    return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
 };

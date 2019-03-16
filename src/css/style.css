@@ -364,6 +364,36 @@ html .row, body .row {
   cursor: pointer;
 }
 
+.swal-modal {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 3px solid white;
+}
+
+.swal-title {
+  color: #12121a;
+}
+
+.swal-text {
+  text-align: center;
+  color: #12121a;
+  font-weight: bold;
+}
+
+.swal-button {
+  color: white;
+  background-color: #f7ab1b;
+  border: 2px solid #12121a;
+  outline: none;
+}
+
+.swal-button:not([disabled]):hover, .swal-button:active, .swal-button:focus {
+  background-color: #12121a;
+  border: 2px solid #f7ab1b;
+  outline: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
 .bounce {
   -webkit-animation: bounce 1.5s infinite;
   animation: bounce 1.5s infinite;

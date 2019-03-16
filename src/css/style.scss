@@ -344,6 +344,35 @@ html, body {
     cursor: pointer;
 };
 
+.swal-modal {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 3px solid white;
+};
+
+.swal-title {
+    color: rgb(18, 18, 26);
+};
+
+.swal-text {
+    text-align: center;
+    color: rgb(18, 18, 26);
+    font-weight: bold;
+};
+
+.swal-button {
+    color: white;
+    background-color: rgb(247, 171, 27);
+    border: 2px solid rgb(18, 18, 26);
+    outline: none;
+
+    &:not([disabled]):hover, &:active, &:focus {
+        background-color: rgb(18, 18, 26);
+        border: 2px solid rgb(247, 171, 27);
+        outline: none;
+        box-shadow: none;
+    };
+};
+
 .bounce {
 	-moz-animation: bounce 1.5s infinite;
 	-webkit-animation: bounce 1.5s infinite;
