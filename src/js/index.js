@@ -85,11 +85,12 @@ Promise.all(files.map(path => d3.json(path)))
                     TweenMax.fromTo(`${".us-map"} svg`, 0.5, { scale: 0.1 }, { scale: 1, ease: Linear.easeNone });
                 };
 
-                if (isMobileDevice()) {
+                if (isMobileDevice() && !sessionStorage.getItem("alert1")) {
                     swal({
                         title: "Hi, Mobile User",
                         text: "Tap different cities to view the rat complaints per capita per 100,000 population in 2018."
                     });
+                    sessionStorage.setItem("alert1", true);
                 };
             })
             .to("#pinContainer", 1, { z: 0 })
@@ -101,11 +102,12 @@ Promise.all(files.map(path => d3.json(path)))
                     TweenMax.fromTo(`${".step"} svg`, 0.5, { scale: 0.1 }, { scale: 1, ease: Linear.easeNone });
                 };
 
-                if (isMobileDevice()) {
+                if (isMobileDevice() && !sessionStorage.getItem("alert2")) {
                     swal({
                         title: "Hi, Mobile User",
                         text: "Tap different circles to view different monthly counts of rat complaints in Chicago."
                     });
+                    sessionStorage.setItem("alert2", true);
                 };
             })
             .to("#pinContainer", 1, { z: 0 })
@@ -117,11 +119,12 @@ Promise.all(files.map(path => d3.json(path)))
                     TweenMax.fromTo(`${".donut"} svg`, 0.5, { scale: 0.1 }, { scale: 1, ease: Linear.easeNone }); 
                 };
                 
-                if (isMobileDevice()) {
+                if (isMobileDevice() && !sessionStorage.getItem("alert3")) {
                     swal({
                         title: "Hi, Mobile User",
                         text: "Tap each slice of the pie to see the number of rat complaints filed from a certain type of surrounding environment in Chicago from 2014 to 2018."
                     });
+                    sessionStorage.setItem("alert3", true);
                 };
             });
         new ScrollMagic.Scene({
