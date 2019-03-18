@@ -16,3 +16,4 @@ In recent years, Chicago has been receiving increasing numbers of rodent infesta
 6. <a href="https://data.lacity.org/A-Well-Run-City/MyLA311-Service-Request-Data-2018/h65r-yf5i">Eric Garcetti @ MayorOfLA</a>
 7. <a href="https://data.detroitmi.gov/Government/Improve-Detroit-Issues/fjru-bz8m/data">City of Detroit Open Data</a>
 8. <a href="https://api.census.gov/data/2016/acs/acs5/variables.html">American Community Survey 2016 5-Year Table</a>
+9. <a href="http://us-city.census.okfn.org/dataset/service-requests">Links to Other City Data Portals</a>
