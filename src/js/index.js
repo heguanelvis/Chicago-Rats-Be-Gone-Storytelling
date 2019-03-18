@@ -88,7 +88,7 @@ Promise.all(files.map(path => d3.json(path)))
                 if (isMobileDevice() && !sessionStorage.getItem("alert1")) {
                     swal({
                         title: "Hi, Mobile User",
-                        text: "Tap different cities to view the rat complaints per capita per 100,000 population in 2018."
+                        text: "Tap different cities to view the rat complaints per 100,000 population in 2018."
                     });
                     sessionStorage.setItem("alert1", true);
                 };
