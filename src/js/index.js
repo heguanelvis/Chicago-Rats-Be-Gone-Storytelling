@@ -21,7 +21,13 @@ let intro = document.querySelector(".intro");
 intro.style.backgroundImage = `url(${slideBg1})`;
 
 /* Data */
-const files = ["data/chicago_5_year_complaints_by_date.json", "data/chicago_premise_indicators.json", "data/us_states.json", "data/us_rats_by_state.json"];
+const files = [
+    "data/chicago_5_year_complaints_by_date.json", 
+    "data/chicago_premise_indicators.json", 
+    "data/us_states.json", 
+    "data/us_rats_by_state.json",
+    "data/chicago_rat_property.json"
+];
 
 /* Plot */
 Promise.all(files.map(path => d3.json(path)))
@@ -39,6 +45,8 @@ Promise.all(files.map(path => d3.json(path)))
         const premiseIndicators = res[1];
         const usStates = res[2];
         const usRats = res[3];
+        const ratProperty = res[4];
+        console.log(ratProperty);
 
         /* US Map*/
         const mapMargin = { left: 75, right: 75, top: 75, bottom: 75 }
@@ -74,6 +82,17 @@ Promise.all(files.map(path => d3.json(path)))
             .attr("height", donutHeight)
         const donutChart = new DonutChart(premiseIndicators, donutCanvas, donutWidth, donutHeight, donutMargin, donutRadius);
         responsivefy(donutChart.canvas);
+
+        /* Hexbin Chart */
+        // const hexbinMargin = { left: 75, right: 75, top: 75, bottom: 75 }
+        // const hexbinWidth = 1000;
+        // const hexbinHeight = 700;
+        // let hexbinCanvas = d3.select("#chart4")
+        //     .append("svg")
+        //     .attr("width", hexbinWidth)
+        //     .attr("height", hexbinHeight)
+        // const hexbinChart = new hexbinChart(ratProperty, hexbinCanvas, hexbinWidth, hexbinHeight, hexbinMargin);
+        // responsivefy(hexbinChart.canvas);
 
         /* Slider Control */
         let sliderController = new ScrollMagic.Controller();
