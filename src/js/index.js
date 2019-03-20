@@ -126,11 +126,15 @@ Promise.all(files.map(path => d3.json(path)))
                     });
                     sessionStorage.setItem("alert3", true);
                 };
-            });
+            })
+            .to("#pinContainer", 1, { z: 0 })
+            .to(".story-section.donut", 0.4, { y: "-100%", ease: Linear.easeNone })
+            .fromTo(".story-section.hexbin", 0.4, { y: "100%" }, { y: "0%", ease: Linear.easeNone });
+            
         new ScrollMagic.Scene({
             triggerElement: "#pinContainer",
             triggerHook: "onLeave",
-            duration: "400%"
+            duration: "500%"
         }).setPin("#pinContainer")
             .setTween(wipeAnimation)
             .addTo(sliderController);

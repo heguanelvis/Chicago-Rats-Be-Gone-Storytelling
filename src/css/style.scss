@@ -303,6 +303,29 @@ html, body {
         };
     };
 
+    &:nth-of-type(5) {
+        background: $slide-bg-color;
+        @include mobile-sm {
+            height: 800px;
+        };
+        @include mobile-lg {
+            height: 900px;
+        };
+        @include ssm {
+            height: 100%;
+            min-height: 650px;
+        };
+        @include sm {
+            min-height: 600px;
+        };
+        @include xl {
+            min-height: 580px;
+        };
+        @include xxl {
+            min-height: 710px;
+        };
+    };
+
     .chart-source {
         fill: white;
         text-decoration: underline;
