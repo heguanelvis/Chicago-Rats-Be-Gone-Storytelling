@@ -66,8 +66,11 @@ export default class Hexbin {
             .data(this.bins)
             .join("path")
                 .attr("d", this.hexbin.hexagon())
+                .attr("transform", `translate(${this.margin.left * 1.5}, ${this.margin.top * 1.5})`)
+                .attr("fill", d => this.fill(d.length))
+                    .transition()
+                    .duration(1250)
                 .attr("transform", d => `translate(${d.x}, ${d.y})`)
-                .attr("fill", d => this.fill(d.length));
     };
 
     graphAxesLabel() {
