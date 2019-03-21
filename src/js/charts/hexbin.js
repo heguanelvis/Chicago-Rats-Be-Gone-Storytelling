@@ -52,25 +52,54 @@ export default class Hexbin {
             .y(d => this.y(d.complaintCount))
             .radius(20)
             .extent([
-                [this.margin.left, this.margin.top], 
+                [this.margin.left, this.margin.top],
                 [this.margin.left + this.graphWidth, this.margin.top + this.graphHeight]
             ]);
 
         this.bins = this.hexbin(this.data);
 
         this.fill = d3.scaleThreshold()
-            .domain([1, 2, 3, 4, 5, 6, 7, d3.max(this.bins, d => d.length) / 2])
-            .range(["#ffffff", "#fffac6", "#fff486", "#fcee21", "#f9c524", "#f49c25", "#ec7025"]);
+            .domain([1, 2, 3, 4, 5, 6, 8, d3.max(this.bins, d => d.length) / 2])
+            .range(["#ffffff", "#fffac6", "#fff486", "#fcee21", "#f9c524", "#f49c25", "#ec7025", "#e95f26", "#e54b27"]);
 
-        this.graph.selectAll("path")
+        this.paths = this.graph.selectAll("path")
             .data(this.bins)
             .join("path")
-                .attr("d", this.hexbin.hexagon())
-                .attr("transform", `translate(${this.margin.left * 1.5}, ${this.margin.top * 1.5})`)
-                .attr("fill", d => this.fill(d.length))
-                    .transition()
-                    .duration(1250)
-                .attr("transform", d => `translate(${d.x}, ${d.y})`)
+            .attr("d", this.hexbin.hexagon())
+            .attr("transform", `translate(${this.margin.left * 1.5}, ${this.margin.top * 1.5})`)
+            .attr("fill", d => this.fill(d.length));
+
+        this.paths.transition()
+            .duration(1250)
+            .attr("transform", d => `translate(${d.x}, ${d.y})`);
+
+        this.paths.on("mouseover", this.handleMouseOver.bind(this))
+            .on("mouseout", this.handleMouseOut);
+    };
+
+    handleMouseOver(d, i, n) {
+        d3.select(n[i])
+            .attr("stroke", "rgb(203, 32, 45)")
+            .attr("stroke-width", 5)
+            .attr("stroke-opacity", 0.8);
+
+        this.graph.append("foreignObject")
+            .attr("width", 100)
+            .attr("height", 50)
+            .attr("id", `t-${parseInt(d.x)}-${parseInt(d.y)}-${i}`)
+            .attr("x", d.x - 10)
+            .attr("y", d.y - 80)
+            .html(() => {
+                return `<div class="tip-style">Count: ${d.length}</div>`;
+            });
+    };
+
+    handleMouseOut(d, i, n) {
+        d3.select(this)
+            .attr("stroke", "none");
+
+        d3.select(`#t-${parseInt(d.x)}-${parseInt(d.y)}-${i}`)
+            .remove();
     };
 
     graphAxesLabel() {
