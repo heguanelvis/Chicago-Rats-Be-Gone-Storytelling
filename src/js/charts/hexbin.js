@@ -85,13 +85,13 @@ export default class Hexbin {
             .attr("stroke-opacity", 0.8);
 
         this.graph.append("foreignObject")
-            .attr("width", 100)
-            .attr("height", 50)
+        .attr("width", 120)
+        .attr("height", 80)
             .attr("id", `t-${parseInt(d.x)}-${parseInt(d.y)}-${i}`)
-            .attr("x", d.x - 10)
-            .attr("y", d.y - 80)
+            .attr("x", d.x + 5)
+            .attr("y", d.y - 100)
             .html(() => {
-                return `<div class="tip-style">Count: ${d.length}</div>`;
+                return `<div class="tip-style">Community Count: ${d.length}</div>`;
             });
     };
 
