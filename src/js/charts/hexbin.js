@@ -36,7 +36,7 @@ export default class Hexbin {
         this.hexbin = d3Hexbin()
             .x(d => this.x(d.vacantHousing))
             .y(d => this.y(d.complaintCount))
-            .radius(25)
+            .radius(20)
             .extent([
                 [this.margin.left, this.margin.top], 
                 [this.margin.left + this.graphWidth, this.margin.top + this.graphHeight]
@@ -44,12 +44,16 @@ export default class Hexbin {
 
         this.bins = this.hexbin(this.data);
 
+        this.fill = d3.scaleThreshold()
+            .domain([1, 2, 3, 4, 5, 6, 7, d3.max(this.bins, d => d.length) / 2])
+            .range(["#ffffff", "#fffac6", "#fff486", "#fcee21", "#f9c524", "#f49c25", "#ec7025"]);
+
         this.graph.selectAll("path")
             .data(this.bins)
             .join("path")
                 .attr("d", this.hexbin.hexagon())
                 .attr("transform", d => `translate(${d.x}, ${d.y})`)
-                .attr("fill", "red");
+                .attr("fill", d => this.fill(d.length));
     };
 
     grapher() {
