@@ -67,7 +67,8 @@ export default class Hexbin {
             .join("path")
             .attr("d", this.hexbin.hexagon())
             .attr("transform", `translate(${this.margin.left * 1.5}, ${this.margin.top * 1.5})`)
-            .attr("fill", d => this.fill(d.length));
+            .attr("fill", d => this.fill(d.length))
+            .attr("class", "cursor-pointer");
 
         this.paths.transition()
             .duration(1250)
