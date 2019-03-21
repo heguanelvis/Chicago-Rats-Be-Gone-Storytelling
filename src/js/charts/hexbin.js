@@ -1,6 +1,7 @@
 import * as d3 from "d3";
+import { hexbin as d3Hexbin } from "d3-hexbin";
 
-export default class StepChart {
+export default class Hexbin {
     constructor(data, canvas, width, height, margin) {
         this.data = data;
         this.canvas = canvas;
@@ -16,6 +17,51 @@ export default class StepChart {
         this.graph = this.canvas.append("g")
             .attr("tranform", `translate(${this.margin.left}, ${this.margin.top})`);
     };
+
+    graphScales() {
+        console.log(this.data);
+
+        this.x = d3.scaleLinear()
+            .domain(d3.extent(this.data, d => d.vacantHousing))
+            .range([this.margin.left, this.graphWidth + this.margin.left])
+            .nice();
+
+        this.y = d3.scaleLinear()
+            .domain(d3.extent(this.data, d => d.complaintCount))
+            .range([this.graphHeight + this.margin.top, this.margin.top])
+            .nice();
+    };
+
+    graphHexbin() {
+        this.hexbin = d3Hexbin()
+            .x(d => this.x(d.vacantHousing))
+            .y(d => this.y(d.complaintCount))
+            .radius(25)
+            .extent([
+                [this.margin.left, this.margin.top], 
+                [this.margin.left + this.graphWidth, this.margin.top + this.graphHeight]
+            ]);
+
+        this.bins = this.hexbin(this.data);
+
+        this.graph.selectAll("path")
+            .data(this.bins)
+            .join("path")
+                .attr("d", this.hexbin.hexagon())
+                .attr("transform", d => `translate(${d.x}, ${d.y})`)
+                .attr("fill", "red");
+    };
+
+    grapher() {
+        this.graphSetup();
+        this.graphScales();
+        this.graphHexbin();
+        this.graphed = true;
+    };
+}
+
+/*
+export default class StepChart {
 
     graphScales() {
         const dateExtent = d3.extent(this.data, d => d.date)
@@ -186,5 +232,5 @@ export default class StepChart {
         this.graphed = true;
     };
 };
-
+*/
 

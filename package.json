@@ -32,6 +32,7 @@
     "babel-polyfill": "^6.26.0",
     "bootstrap-css-only": "^4.3.1",
     "d3": "^5.9.1",
+    "d3-hexbin": "^0.2.2",
     "d3-svg-legend": "^2.25.6",
     "gsap": "^2.1.1",
     "scrollmagic": "^2.0.6",

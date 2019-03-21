@@ -12,6 +12,7 @@ import * as d3 from "d3";
 import MapChart from "./charts/usMap";
 import StepChart from "./charts/step";
 import DonutChart from "./charts/donut";
+import HexbinChart from "./charts/hexbin";
 
 /* Images */
 let favicon = document.getElementById("favicon");
@@ -46,7 +47,6 @@ Promise.all(files.map(path => d3.json(path)))
         const usStates = res[2];
         const usRats = res[3];
         const ratProperty = res[4];
-        console.log(ratProperty);
 
         /* US Map*/
         const mapMargin = { left: 75, right: 75, top: 75, bottom: 75 }
@@ -84,15 +84,15 @@ Promise.all(files.map(path => d3.json(path)))
         responsivefy(donutChart.canvas);
 
         /* Hexbin Chart */
-        // const hexbinMargin = { left: 75, right: 75, top: 75, bottom: 75 }
-        // const hexbinWidth = 1000;
-        // const hexbinHeight = 700;
-        // let hexbinCanvas = d3.select("#chart4")
-        //     .append("svg")
-        //     .attr("width", hexbinWidth)
-        //     .attr("height", hexbinHeight)
-        // const hexbinChart = new hexbinChart(ratProperty, hexbinCanvas, hexbinWidth, hexbinHeight, hexbinMargin);
-        // responsivefy(hexbinChart.canvas);
+        const hexbinMargin = { left: 75, right: 75, top: 75, bottom: 75 }
+        const hexbinWidth = 1000;
+        const hexbinHeight = 700;
+        let hexbinCanvas = d3.select("#chart4")
+            .append("svg")
+            .attr("width", hexbinWidth)
+            .attr("height", hexbinHeight)
+        const hexbinChart = new HexbinChart(ratProperty, hexbinCanvas, hexbinWidth, hexbinHeight, hexbinMargin);
+        responsivefy(hexbinChart.canvas);
 
         /* Slider Control */
         let sliderController = new ScrollMagic.Controller();
@@ -148,7 +148,21 @@ Promise.all(files.map(path => d3.json(path)))
             })
             .to("#pinContainer", 1, { z: 0 })
             .to(".story-section.donut", 0.4, { y: "-100%", ease: Linear.easeNone })
-            .fromTo(".story-section.hexbin", 0.4, { y: "100%" }, { y: "0%", ease: Linear.easeNone });
+            .fromTo(".story-section.hexbin", 0.4, { y: "100%" }, { y: "0%", ease: Linear.easeNone })
+            .call(() => {
+                if (hexbinChart.graphed === false) {
+                    hexbinChart.grapher();
+                    TweenMax.fromTo(`${".hexbin"} svg`, 0.5, { scale: 0.1 }, { scale: 1, ease: Linear.easeNone });
+                };
+
+                if (isMobileDevice() && !sessionStorage.getItem("alert4")) {
+                    swal({
+                        title: "Hi, Mobile User",
+                        text: "Tap each bin to see the number of communities that have similar conditions from 2014 to 2018."
+                    });
+                    sessionStorage.setItem("alert4", true);
+                };
+            });
             
         new ScrollMagic.Scene({
             triggerElement: "#pinContainer",
@@ -159,7 +173,10 @@ Promise.all(files.map(path => d3.json(path)))
             .addTo(sliderController);
     })
     .catch(err => {
-        alert("Something went wrong...");
+        swal("Something went wrong...", {
+            button: false,
+        });
+
         console.log(err);
     });
 
