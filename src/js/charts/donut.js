@@ -1,7 +1,7 @@
 import * as d3 from "d3";
 import { legendColor } from "d3-svg-legend";
 
-export default class donutChart {
+export default class DonutChart {
     constructor(data, canvas, width, height, margin, radius) {
         this.data = data;
         this.canvas = canvas;
