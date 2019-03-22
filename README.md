@@ -20,12 +20,12 @@ In recent years, Chicago has been receiving increasing numbers of rodent infesta
 
 ## Features
 Some of the project's features include:
-    - responsiveness (try resizing and different device) 💻📱
-    - hoverable (they all have informative tooltips)
-    - animation (love all the visual effects!)
-    - slider (click or drag slider control to certain points to change data)
-    - delaunay (smaller graphs have voronoi picker to help viewers easily choose data to show)
-    - various graph types (map, step, pie, hexbin, line, sunburst, and possibly more in the future updates...)
+- responsiveness (try resizing and different device) 💻📱
+- hoverable (they all have informative tooltips)
+- animation (love all the visual effects!)
+- slider (click or drag slider control to certain points to change data)
+- delaunay (smaller graphs have voronoi picker to help viewers easily choose data to show)
+- various graph types (map, step, pie, hexbin, line, sunburst, and possibly more in the future updates...)
 
 ## How to Use?
 1. Click the buttons on homepage to go to the section you would like to view.
