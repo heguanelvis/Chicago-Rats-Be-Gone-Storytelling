@@ -38,7 +38,7 @@ Chicago Rats Be Gone D3 was built by two University of Chicago students.
 👽 <a href="https://github.com/heguanelvis">Guan He</a>
 👻 <a href="https://github.com/AaaChenBao">Chen Bao</a>
 
-If you like our project or simply like us 😄, please give us a star, thank you!
+If you like our project or simply like us 😄, please give us a star 🌟, thank you!
 
 If you have some suggestions, you could contact us at either:
 - guanh@uchicago.edu
@@ -48,6 +48,7 @@ If you have some suggestions, you could contact us at either:
 1. Our project would have not been possible without the help of:
 - <a href="https://github.com/alexcengler">Alex Engler</a>
 - <a href="https://github.com/mcnuttandrew">Andrew McNutt</a>
+
 Their feedback is super helpful and help us improve our graphs consistently.
 
 2. The many authors of D3 libraries and snippets:
