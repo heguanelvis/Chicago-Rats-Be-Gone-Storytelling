@@ -144,10 +144,12 @@ body {
       color: white;
       cursor: pointer;
       text-decoration: none;
+
       &:hover,
       &:active,
       &:focus {
         color: rgb(247, 171, 27);
+        
         &::after {
           content: " Return To Home Page";
         }
@@ -203,6 +205,7 @@ body {
       .instruction-text {
         font-size: 1.1rem;
         font-weight: bold;
+
         p {
           margin: 0;
         }
@@ -289,6 +292,7 @@ body {
 
   &:nth-of-type(4) {
     background: $slide-bg-color;
+
     @include mobile-sm {
       height: 800px;
     }
@@ -312,6 +316,7 @@ body {
 
   &:nth-of-type(5) {
     background: $slide-bg-color;
+
     @include mobile-sm {
       height: 800px;
     }
@@ -336,6 +341,7 @@ body {
   .chart-source {
     fill: white;
     text-decoration: underline;
+
     &:hover {
       fill: $source-hover-color;
     }
