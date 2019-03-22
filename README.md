@@ -49,7 +49,7 @@ If you have some suggestions, you could contact us at either:
 - <a href="https://github.com/alexcengler">Alex Engler</a>
 - <a href="https://github.com/mcnuttandrew">Andrew McNutt</a>
 
-Their feedback is super helpful and help us improve our graphs consistently.
+Their feedback is super helpful and helps us improve our graphs consistently.
 
 2. The many authors of D3 libraries and snippets:
 - <a href="https://d3-legend.susielu.com/">Susie Lu (d3-legend)</a>
