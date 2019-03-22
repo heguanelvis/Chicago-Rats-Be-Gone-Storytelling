@@ -13,7 +13,7 @@ export default class donutChart {
         this.center = {
             x: this.graphWidth / 2 + 2.3 * this.margin.left,
             y: this.graphHeight / 2 + 1.7 * this.margin.top
-        }
+        };
         this.radius = radius;
         this.colorScheme = [
             "rgb(229, 75, 39)",     // darkerorange
@@ -43,7 +43,7 @@ export default class donutChart {
         this.arcPath = d3.arc()
             .outerRadius(this.radius)
             .innerRadius(this.radius / 2);
-        
+
         this.hoverArcPath = d3.arc()
             .outerRadius(this.radius)
             .innerRadius(this.radius / 2.2);
@@ -56,7 +56,7 @@ export default class donutChart {
     graphLegend() {
         this.legendGroup = this.canvas.append("g")
             .attr("transform", `translate(${2 * this.margin.left}, ${0.1 * this.height})`);
-        
+
         this.legend = legendColor()
             .shape("circle")
             .shapePadding(5)
@@ -107,7 +107,7 @@ export default class donutChart {
         this.graph.append("text")
             .text("Most Rat Complaints Are Filled at Baited Premises with Garbage and Rats")
             .attr("text-anchor", "middle")
-            .attr("transform", `translate(${this.width * 0.03}, ${this.height/ -1.85})`)
+            .attr("transform", `translate(${this.width * 0.03}, ${this.height / -1.85})`)
             .attr("font-size", "20")
             .attr("fill", "white");
 
@@ -125,7 +125,7 @@ export default class donutChart {
             .attr("font-size", "14")
             .attr("fill", "white");
     }
-    
+
     makeDonut() {
         this.color.domain(this.data.map(d => d.Indicators));
         this.legendGroup.call(this.legend);

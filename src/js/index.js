@@ -23,9 +23,9 @@ intro.style.backgroundImage = `url(${slideBg1})`;
 
 /* Data */
 const files = [
-    "data/chicago_5_year_complaints_by_date.json", 
-    "data/chicago_premise_indicators.json", 
-    "data/us_states.json", 
+    "data/chicago_5_year_complaints_by_date.json",
+    "data/chicago_premise_indicators.json",
+    "data/us_states.json",
     "data/us_rats_by_state.json",
     "data/chicago_rat_property.json"
 ];
@@ -135,9 +135,9 @@ Promise.all(files.map(path => d3.json(path)))
             .call(() => {
                 if (donutChart.graphed === false) {
                     donutChart.grapher();
-                    TweenMax.fromTo(`${".donut"} svg`, 0.5, { scale: 0.1 }, { scale: 1, ease: Linear.easeNone }); 
+                    TweenMax.fromTo(`${".donut"} svg`, 0.5, { scale: 0.1 }, { scale: 1, ease: Linear.easeNone });
                 };
-                
+
                 if (isMobileDevice() && !sessionStorage.getItem("alert3")) {
                     swal({
                         title: "Hi, Mobile User",
@@ -163,7 +163,7 @@ Promise.all(files.map(path => d3.json(path)))
                     sessionStorage.setItem("alert4", true);
                 };
             });
-            
+
         new ScrollMagic.Scene({
             triggerElement: "#pinContainer",
             triggerHook: "onLeave",
@@ -194,6 +194,15 @@ function responsivefy(svg) {
     d3.select(window).on(`resize.${container.attr("id")}`, resize);
 
     function resize() {
+        if (typeof console._commandLineAPI !== 'undefined') {
+            console.API = console._commandLineAPI;
+        } else if (typeof console._inspectorCommandLineAPI !== 'undefined') {
+            console.API = console._inspectorCommandLineAPI;
+        } else if (typeof console.clear !== 'undefined') {
+            console.API = console;
+        };
+        console.API.clear();
+
         let targetWidth = parseInt(container.style("width"));
         if (targetWidth <= 1000) {
             svg.attr("width", targetWidth - 30);

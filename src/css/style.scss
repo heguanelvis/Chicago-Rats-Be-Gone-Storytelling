@@ -32,7 +32,7 @@ purple
 font-family: 'Acme', sans-serif;
 */
 
-@import url('https://fonts.googleapis.com/css?family=Laila');
+@import url("https://fonts.googleapis.com/css?family=Laila");
 
 $break-mobile-sm: 400px;
 $break-mobile-lg: 481px;
@@ -47,414 +47,435 @@ $source-hover-color: rgb(247, 171, 27);
 $tip-color: hotpink;
 $tip-bg-color: rgb(18, 18, 26);
 
-$laila: 'Laila', serif;
+$laila: "Laila", serif;
 
 @mixin mobile-sm {
-    @media (max-width: #{$break-mobile-sm}) {
-       @content;
-   };
-};
+  @media (max-width: #{$break-mobile-sm}) {
+    @content;
+  }
+}
 
 @mixin mobile-lg {
-    @media (min-width: #{$break-mobile-sm}) {
-       @content;
-   };
-};
+  @media (min-width: #{$break-mobile-sm}) {
+    @content;
+  }
+}
 
 @mixin ssm {
-    @media (min-width: #{$break-mobile-lg}) {
-       @content;
-   };
-};
+  @media (min-width: #{$break-mobile-lg}) {
+    @content;
+  }
+}
 
 @mixin sm {
-   @media (min-width: #{$break-sm}) {
-       @content;
-   };
-};
+  @media (min-width: #{$break-sm}) {
+    @content;
+  }
+}
 
 @mixin md {
-    @media (min-width: #{$break-md}) {
-       @content;
-   };
-};
+  @media (min-width: #{$break-md}) {
+    @content;
+  }
+}
 
 @mixin lg {
-    @media (min-width: #{$break-lg}) {
-       @content;
-   };
-};
+  @media (min-width: #{$break-lg}) {
+    @content;
+  }
+}
 
 @mixin xl {
-    @media (min-width: #{$break-xl}) {
-       @content;
-   };
-};
+  @media (min-width: #{$break-xl}) {
+    @content;
+  }
+}
 
 @mixin xxl {
-    @media (min-width: #{$break-xl}) {
-       @content;
-   };
-};
+  @media (min-width: #{$break-xl}) {
+    @content;
+  }
+}
 
-html, body {
-    height: 100%;
-    width: 100%;
-    font-family: $laila;
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-family: $laila;
 
-    .row {
-        margin: 0;
-    };
-};
+  .row {
+    margin: 0;
+  }
+}
 
 #pinContainer {
-    width: 100% !important;
+  width: 100% !important;
 
-    @include mobile-sm {
-        height: 800px;
-    };
-    @include mobile-lg {
-        height: 900px;
-    };
-    @include ssm {
-        height: 100%;
-    };
-};
+  @include mobile-sm {
+    height: 800px;
+  }
+  @include mobile-lg {
+    height: 900px;
+  }
+  @include ssm {
+    height: 100%;
+  }
+}
 
 .story-section {
+  width: 100%;
+  color: white;
+  position: absolute;
+
+  h3 {
+    font-size: 1.6rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+
+  .homepage-icon {
+    position: fixed;
+    top: 1%;
+    left: 1%;
+
+    a {
+      color: white;
+      cursor: pointer;
+      text-decoration: none;
+      &:hover,
+      &:active,
+      &:focus {
+        color: rgb(247, 171, 27);
+        &::after {
+          content: " Return To Home Page";
+        }
+      }
+    }
+  }
+
+  &:nth-of-type(1) {
+    color: white;
+    background-size: cover;
+
+    .intro-info {
+      position: absolute;
+      top: 7%;
+      left: 5%;
+
+      a {
+        text-decoration: none;
+        .story-return-btn {
+          padding: 0.7rem;
+          font-size: 1rem;
+          font-weight: bold;
+          border-radius: 5%;
+          border: 2px double white;
+          background: rgb(18, 18, 26);
+          color: white;
+          display: block;
+
+          &:hover,
+          &:active,
+          &:focus {
+            background: white;
+            color: rgb(18, 18, 26);
+            border: 2px double rgb(18, 18, 26);
+            outline: none;
+          }
+        }
+      }
+
+      .repo-link {
+        font-size: 3rem;
+        color: white;
+        display: block;
+
+        &:hover,
+        &:active,
+        &:focus {
+          color: rgb(247, 171, 27);
+          outline: none；;
+        }
+      }
+
+      .instruction-text {
+        font-size: 1.1rem;
+        font-weight: bold;
+        p {
+          margin: 0;
+        }
+      }
+    }
+
+    @include mobile-sm {
+      padding-top: 30vh;
+      height: 800px;
+    }
+    @include mobile-lg {
+      padding-top: 35vh;
+      height: 900px;
+    }
+    @include ssm {
+      height: 100%;
+      padding-top: 0;
+      align-items: center;
+      min-height: 650px;
+    }
+    @include sm {
+      min-height: 600px;
+    }
+    @include xl {
+      min-height: 580px;
+    }
+    @include xxl {
+      min-height: 710px;
+    }
+  }
+
+  &:nth-of-type(2) {
+    background: $slide-bg-color;
+
+    .em-title {
+      fill: rgb(247, 171, 27);
+      font-weight: bold;
+    }
+
+    @include mobile-sm {
+      height: 800px;
+    }
+    @include mobile-lg {
+      height: 900px;
+    }
+    @include ssm {
+      height: 100%;
+      min-height: 650px;
+    }
+    @include sm {
+      min-height: 600px;
+    }
+    @include xl {
+      min-height: 580px;
+    }
+    @include xxl {
+      min-height: 710px;
+    }
+  }
+
+  &:nth-of-type(3) {
+    background: $slide-bg-color;
+
+    @include mobile-sm {
+      height: 800px;
+    }
+    @include mobile-lg {
+      height: 900px;
+    }
+    @include ssm {
+      height: 100%;
+      min-height: 650px;
+    }
+    @include sm {
+      min-height: 600px;
+    }
+    @include xl {
+      min-height: 580px;
+    }
+    @include xxl {
+      min-height: 710px;
+    }
+  }
+
+  &:nth-of-type(4) {
+    background: $slide-bg-color;
+    @include mobile-sm {
+      height: 800px;
+    }
+    @include mobile-lg {
+      height: 900px;
+    }
+    @include ssm {
+      height: 100%;
+      min-height: 650px;
+    }
+    @include sm {
+      min-height: 600px;
+    }
+    @include xl {
+      min-height: 580px;
+    }
+    @include xxl {
+      min-height: 710px;
+    }
+  }
+
+  &:nth-of-type(5) {
+    background: $slide-bg-color;
+    @include mobile-sm {
+      height: 800px;
+    }
+    @include mobile-lg {
+      height: 900px;
+    }
+    @include ssm {
+      height: 100%;
+      min-height: 650px;
+    }
+    @include sm {
+      min-height: 600px;
+    }
+    @include xl {
+      min-height: 580px;
+    }
+    @include xxl {
+      min-height: 710px;
+    }
+  }
+
+  .chart-source {
+    fill: white;
+    text-decoration: underline;
+    &:hover {
+      fill: $source-hover-color;
+    }
+  }
+
+  .tip-style {
+    display: inline-block;
+    text-align: center;
+    border-radius: 10%;
+    padding: 0.5rem;
+    background: $tip-bg-color;
+    color: $tip-color;
+    border: white 1px solid;
+  }
+
+  .ticks-style {
+    font-family: $laila;
+    font-size: 0.75rem;
+  }
+
+  .arrow-instruction {
+    font-size: 2rem;
+    position: absolute;
     width: 100%;
     color: white;
-    position: absolute;
+    bottom: 1%;
+    opacity: 0.2;
+  }
 
-    h3 {
-        font-size: 1.6rem;
-    };
-    
-    p {
-        font-size: 1rem;
-    };
-
-    .homepage-icon {
-        position: fixed;
-        top: 1%;
-        left: 1%;
-
-        a {
-            color: white;
-            cursor: pointer;
-            text-decoration: none;
-            &:hover, &:active, &:focus {
-                color: rgb(247, 171, 27);
-                &::after {
-                    content: " Return To Home Page";
-                }
-            };
-        };
-    };
-
-    &:nth-of-type(1) {
-        color: white;
-        background-size: cover;
-
-        .intro-info {
-            position: absolute;
-            top: 7%;
-            left: 5%;
-
-            a {
-                text-decoration: none;
-                .story-return-btn {
-                    padding: 0.7rem;
-                    font-size: 1rem;
-                    font-weight: bold;
-                    border-radius: 5%;
-                    border: 2px double white;
-                    background: rgb(18, 18, 26);
-                    color: white;
-                    display: block;
-
-                    &:hover, &:active, &:focus {
-                        background: white;
-                        color: rgb(18, 18, 26);
-                        border: 2px double rgb(18, 18, 26);
-                        outline: none;
-                    };
-                };
-            };
-
-            .repo-link {
-                font-size: 3rem;
-                color: white;
-                display: block;
-
-                &:hover, &:active, &:focus {
-                    color: rgb(247, 171, 27);
-                    outline: none；
-                };
-            };
-
-            .instruction-text {
-                font-size: 1.1rem;
-                font-weight: bold;
-                p {
-                    margin: 0;
-                };
-            };
-        };
-
-        @include mobile-sm {
-            padding-top: 30vh;
-            height: 800px;
-        };
-        @include mobile-lg {
-            padding-top: 35vh;
-            height: 900px;
-        };
-        @include ssm {
-            height: 100%;
-            padding-top: 0;
-            align-items: center;
-            min-height: 650px;
-        };
-        @include sm {
-            min-height: 600px;
-        };
-        @include xl {
-            min-height: 580px;
-        };
-        @include xxl {
-            min-height: 710px;
-        };
-    };
-
-    &:nth-of-type(2) {
-        background: $slide-bg-color;
-
-        .em-title {
-            fill: rgb(247, 171, 27);
-            font-weight: bold;
-        };
-
-        @include mobile-sm {
-            height: 800px;
-        };
-        @include mobile-lg {
-            height: 900px;
-        };
-        @include ssm {
-            height: 100%;
-            min-height: 650px;
-        };
-        @include sm {
-            min-height: 600px;
-        };
-        @include xl {
-            min-height: 580px;
-        };
-        @include xxl {
-            min-height: 710px;
-        };
-    };
-
-    &:nth-of-type(3) {
-        background: $slide-bg-color;
-
-        @include mobile-sm {
-            height: 800px;
-        };
-        @include mobile-lg {
-            height: 900px;
-        };
-        @include ssm {
-            height: 100%;
-            min-height: 650px;
-        };
-        @include sm {
-            min-height: 600px;
-        };
-        @include xl {
-            min-height: 580px;
-        };
-        @include xxl {
-            min-height: 710px;
-        };
-    };
-
-    &:nth-of-type(4) {
-        background: $slide-bg-color;
-        @include mobile-sm {
-            height: 800px;
-        };
-        @include mobile-lg {
-            height: 900px;
-        };
-        @include ssm {
-            height: 100%;
-            min-height: 650px;
-        };
-        @include sm {
-            min-height: 600px;
-        };
-        @include xl {
-            min-height: 580px;
-        };
-        @include xxl {
-            min-height: 710px;
-        };
-    };
-
-    &:nth-of-type(5) {
-        background: $slide-bg-color;
-        @include mobile-sm {
-            height: 800px;
-        };
-        @include mobile-lg {
-            height: 900px;
-        };
-        @include ssm {
-            height: 100%;
-            min-height: 650px;
-        };
-        @include sm {
-            min-height: 600px;
-        };
-        @include xl {
-            min-height: 580px;
-        };
-        @include xxl {
-            min-height: 710px;
-        };
-    };
-
-    .chart-source {
-        fill: white;
-        text-decoration: underline;
-        &:hover {
-            fill: $source-hover-color;
-        };
-    };
-
-    .tip-style {
-        display: inline-block;
-        text-align: center;
-        border-radius: 10%;
-        padding: 0.5rem;
-        background: $tip-bg-color;
-        color: $tip-color;
-        border: white 1px solid;
-    };
-
-    .ticks-style {
-        font-family: $laila;
-        font-size: 0.75rem;
-    };
-
-    .arrow-instruction {
-        font-size: 2rem;
-        position: absolute;
-        width: 100%;
-        color: white;
-        bottom: 1%;
-        opacity: 0.2;
-    };
-
-    .em-graph-instruction {
-        color: rgb(247, 171, 27);
-    };
-};
+  .em-graph-instruction {
+    color: rgb(247, 171, 27);
+  }
+}
 
 .cursor-pointer {
-    cursor: pointer;
-};
+  cursor: pointer;
+}
 
 .swal-modal {
-    background-color: rgba(255, 255, 255, 0.8);
-    border: 3px solid white;
-};
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 3px solid white;
+}
 
 .swal-title {
-    color: rgb(18, 18, 26);
-};
+  color: rgb(18, 18, 26);
+}
 
 .swal-text {
-    text-align: center;
-    color: rgb(18, 18, 26);
-    font-weight: bold;
-};
+  text-align: center;
+  color: rgb(18, 18, 26);
+  font-weight: bold;
+}
 
 .swal-button {
-    color: white;
-    background-color: rgb(247, 171, 27);
-    border: 2px solid rgb(18, 18, 26);
-    outline: none;
+  color: white;
+  background-color: rgb(247, 171, 27);
+  border: 2px solid rgb(18, 18, 26);
+  outline: none;
 
-    &:not([disabled]):hover, &:active, &:focus {
-        background-color: rgb(18, 18, 26);
-        border: 2px solid rgb(247, 171, 27);
-        outline: none;
-        box-shadow: none;
-    };
-};
+  &:not([disabled]):hover,
+  &:active,
+  &:focus {
+    background-color: rgb(18, 18, 26);
+    border: 2px solid rgb(247, 171, 27);
+    outline: none;
+    box-shadow: none;
+  }
+}
 
 .bounce {
-	-moz-animation: bounce 1.5s infinite;
-	-webkit-animation: bounce 1.5s infinite;
-	animation: bounce 1.5s infinite;
-};
+  -moz-animation: bounce 1.5s infinite;
+  -webkit-animation: bounce 1.5s infinite;
+  animation: bounce 1.5s infinite;
+}
 
 @-moz-keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
-        -moz-transform: translateY(0);
-        transform: translateY(0);
-    };
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    -moz-transform: translateY(0);
+    transform: translateY(0);
+  }
 
-    40% {
-        -moz-transform: translateY(-30px);
-        transform: translateY(-30px);
-    };
+  40% {
+    -moz-transform: translateY(-30px);
+    transform: translateY(-30px);
+  }
 
-    60% {
-        -moz-transform: translateY(-15px);
-        transform: translateY(-15px);
-    };
-};
+  60% {
+    -moz-transform: translateY(-15px);
+    transform: translateY(-15px);
+  }
+}
 
 @-webkit-keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
-        -webkit-transform: translateY(0);
-        transform: translateY(0);
-    };
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
 
-    40% {
-        -webkit-transform: translateY(-30px);
-        transform: translateY(-30px);
-    };
+  40% {
+    -webkit-transform: translateY(-30px);
+    transform: translateY(-30px);
+  }
 
-    60% {
-        -webkit-transform: translateY(-15px);
-        transform: translateY(-15px);
-    };
-};
+  60% {
+    -webkit-transform: translateY(-15px);
+    transform: translateY(-15px);
+  }
+}
 
 @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
-        -moz-transform: translateY(0);
-        -ms-transform: translateY(0);
-        -webkit-transform: translateY(0);
-        transform: translateY(0);
-    };
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
 
-    40% {
-        -moz-transform: translateY(-30px);
-        -ms-transform: translateY(-30px);
-        -webkit-transform: translateY(-30px);
-        transform: translateY(-30px);
-    };
+  40% {
+    -moz-transform: translateY(-30px);
+    -ms-transform: translateY(-30px);
+    -webkit-transform: translateY(-30px);
+    transform: translateY(-30px);
+  }
 
-    60% {
-        -moz-transform: translateY(-15px);
-        -ms-transform: translateY(-15px);
-        -webkit-transform: translateY(-15px);
-        transform: translateY(-15px);
-    };
-};
+  60% {
+    -moz-transform: translateY(-15px);
+    -ms-transform: translateY(-15px);
+    -webkit-transform: translateY(-15px);
+    transform: translateY(-15px);
+  }
+}

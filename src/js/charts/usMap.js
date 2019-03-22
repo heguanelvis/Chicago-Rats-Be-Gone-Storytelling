@@ -21,9 +21,9 @@ export default class MapChart {
 
     graphProjection() {
         this.projection = d3.geoAlbersUsa()
-            .translate([ this.width / 2, this.height / 2])
+            .translate([this.width / 2, this.height / 2])
             .scale([this.scale]);
-    
+
         this.geoGenerator = d3.geoPath(this.projection);
     };
 
@@ -45,7 +45,7 @@ export default class MapChart {
             .append("circle")
             .attr("cx", d => this.projection([d.longitude, d.latitude])[0])
             .attr("cy", d => this.projection([d.longitude, d.latitude])[1]);
-            
+
         circles.transition()
             .duration(1500)
             .attr("r", d => Math.sqrt(d.rats_capita) * 0.7)
@@ -54,13 +54,12 @@ export default class MapChart {
             .attr("stroke-width", 1)
             .attr("class", "cursor-pointer")
             .style("opacity", "0.8");
-    
+
         circles.on("mouseover", this.handleMouseOver.bind(this))
             .on("mouseout", this.handleMouseOut);
     };
 
     handleMouseOver(d, i, n) {
-        console.log(d.longitude);
         d3.select(n[i])
             .attr("r", d => Math.sqrt(d.rats_capita) * 0.8)
             .attr("fill", "rgb(229, 75, 39)");
@@ -85,7 +84,7 @@ export default class MapChart {
         d3.select(`#t-${d.pop}-${d.rats_capita}-${i}`)
             .remove();
     };
-    
+
     graphInfo() {
         this.graph.append("text")
             .html("<a class='em-title'>Chicago</a> Has the Most Rat Complaints per 100,000 Population All Year Round")

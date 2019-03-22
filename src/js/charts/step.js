@@ -36,7 +36,6 @@ export default class StepChart {
     graphAxes() {
         const xAxisGroup = this.graph.append("g")
             .attr("transform", `translate(0, ${this.margin.top + this.graphHeight})`);
-
         const yAxisGroup = this.graph.append("g")
             .attr("transform", `translate(${this.margin.left}, 0)`);
 
@@ -72,7 +71,7 @@ export default class StepChart {
             .attr("stroke-dashoffset", 0);
 
         setTimeout(() => {
-            this.graphCircles()
+            this.graphCircles();
         }, 1500);
     };
 
@@ -128,7 +127,7 @@ export default class StepChart {
             });
     };
 
-    handleMouseOut(d, i, n) {
+    handleMouseOut(d, i) {
         d3.select(this)
             .attr("r", 4)
             .attr("fill", "rgb(252, 238, 33)");

@@ -33,7 +33,6 @@ export default class Hexbin {
     graphAxes() {
         const xAxisGroup = this.graph.append("g")
             .attr("transform", `translate(0, ${this.margin.top + this.graphHeight})`);
-
         const yAxisGroup = this.graph.append("g")
             .attr("transform", `translate(${this.margin.left}, 0)`);
 
@@ -85,8 +84,8 @@ export default class Hexbin {
             .attr("stroke-opacity", 0.8);
 
         this.graph.append("foreignObject")
-        .attr("width", 120)
-        .attr("height", 80)
+            .attr("width", 120)
+            .attr("height", 80)
             .attr("id", `t-${parseInt(d.x)}-${parseInt(d.y)}-${i}`)
             .attr("x", d.x + 5)
             .attr("y", d.y - 100)
