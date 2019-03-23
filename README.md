@@ -16,7 +16,7 @@ In recent years, Chicago has been receiving increasing numbers of rodent infesta
 - SweetAlert
 - Bootstrap Grid (we only want to use its grid system 😂)
 - Font Awesome
-- R (yeah...all the fun data processing 😶)
+- R & Python (yeah...all the fun data processing 😶)
 
 ## Features
 Some of the project's features include:
