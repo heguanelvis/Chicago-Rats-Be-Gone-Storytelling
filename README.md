@@ -62,7 +62,7 @@ Their feedback is super helpful and helps us improve our graphs consistently.
 - and more...
 
 ## Relevant Projects
-If you like to know more about the rat complaints in Chicago:
+If you'd like to know more about the rat complaints in Chicago:
 <a href="https://heguanelvis.github.io/Chicago-Rats-Be-Gone/explore.html">Chicago Rats Be Gone Static Graphs Collection</a>
 
 ## Data Sources
